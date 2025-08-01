@@ -28,9 +28,7 @@ func state_normal() -> void:
 	marker.visible = true
 	velocity = GameManager.get_direction() * SPEED
 	move_and_slide()
-	sprite_2d.flip_h = last_faced_direction.x < 0
-	if velocity.x != 0:
-		last_faced_direction = velocity.normalized()
+
 
 
 func state_posessed() -> void:
