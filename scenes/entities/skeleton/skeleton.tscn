@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqvghd16833cq"]
+
+[ext_resource type="Texture2D" uid="uid://by0oa2cuqli5i" path="res://assets/Skeleton.png" id="1_py50p"]
+[ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
+[ext_resource type="Texture2D" uid="uid://dgfcqhmlg62ig" path="res://assets/ShadowSkeleton.png" id="3_thk0v"]
+[ext_resource type="Texture2D" uid="uid://ct5k48s0sthx2" path="res://assets/Skeleton Marker.png" id="4_tem1c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
+radius = 3.0
+
+[node name="Skeleton" type="CharacterBody2D" groups=["skeleton"]]
+motion_mode = 1
+script = ExtResource("1_u58mj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, -12)
+texture = ExtResource("1_py50p")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u58mj")
+
+[node name="TargetAcquisitionTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-6, 1)
+texture = ExtResource("3_thk0v")
+centered = false
+
+[node name="Marker" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(-0.5, 3.5)
+texture = ExtResource("4_tem1c")

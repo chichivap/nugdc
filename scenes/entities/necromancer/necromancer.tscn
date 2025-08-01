@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtycjwyv8wu6m"]
+
+[ext_resource type="Script" uid="uid://flnwe4yem7ew" path="res://scenes/entities/necromancer/necromancer.gd" id="1_vhpjt"]
+[ext_resource type="Texture2D" uid="uid://bgiba0eoinyn6" path="res://assets/Necromancer.png" id="1_xy2sp"]
+[ext_resource type="Texture2D" uid="uid://b4bqc6md82wq5" path="res://assets/ShadowNecromancer.png" id="3_qnrv5"]
+[ext_resource type="Texture2D" uid="uid://qa7tswhkgfw6" path="res://assets/Necromancer Marker.png" id="4_gam6g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhpjt"]
+radius = 3.0
+
+[node name="Necromancer" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_vhpjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, -14)
+texture = ExtResource("1_xy2sp")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_vhpjt")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-6, -1)
+texture = ExtResource("3_qnrv5")
+centered = false
+
+[node name="Marker" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0.5, 1.5)
+texture = ExtResource("4_gam6g")

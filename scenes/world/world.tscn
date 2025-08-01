@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xyt3hmlpexlr"]
+
+[ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="1_dphjl"]
+[ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://llqkqgoxonrh" path="res://scripts/components/posess_component.tscn" id="3_1fp7r"]
+
+[node name="World" type="Node2D"]
+
+[node name="YSortOrigin" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Necromancer" parent="YSortOrigin" instance=ExtResource("1_dphjl")]
+position = Vector2(102, 76)
+collision_mask = 0
+
+[node name="Skeleton" parent="YSortOrigin" instance=ExtResource("2_sl2e5")]
+position = Vector2(67, 99)
+collision_layer = 2
+collision_mask = 2
+
+[node name="PosessComponent" parent="." node_paths=PackedStringArray("necromancer", "skeleton") instance=ExtResource("3_1fp7r")]
+necromancer = NodePath("../YSortOrigin/Necromancer")
+skeleton = NodePath("../YSortOrigin/Skeleton")

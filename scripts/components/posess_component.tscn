@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://llqkqgoxonrh"]
+
+[ext_resource type="Script" uid="uid://c34yi2ybabwf" path="res://scripts/components/posess_component.gd" id="1_34kft"]
+
+[node name="PosessComponent" type="Node2D"]
+script = ExtResource("1_34kft")
+
+[node name="PosessTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
