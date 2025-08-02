@@ -1,7 +1,7 @@
 class_name PosessComponent
 extends Node2D
 
-const POSESS_DURATION: float = 5.0
+const POSESS_DURATION: float = 2.0
 @onready var posess_timer: Timer = $PosessTimer
 
 

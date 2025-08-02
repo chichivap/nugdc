@@ -8,6 +8,8 @@ const ACTION_MOVE_DOWN: StringName = "move_down"
 const ACTION_MOVE_LEFT: StringName = "move_left"
 const ACTION_MOVE_RIGHT: StringName = "move_right"
 
+const SKELETON_GROUP: StringName = "skeleton"
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var marker: Sprite2D = $Marker
 
@@ -28,9 +30,14 @@ func state_normal() -> void:
 	marker.visible = true
 	velocity = GameManager.get_direction() * SPEED
 	move_and_slide()
-
+	var skeleton: Skeleton = get_tree().get_first_node_in_group(SKELETON_GROUP)
+	if is_instance_valid(skeleton):
+		skeleton.necromancer_posessed.emit(false)
 
 
 func state_posessed() -> void:
-	velocity = Vector2.ZERO
-	marker.visible = false
+	var skeleton: Skeleton = get_tree().get_first_node_in_group(SKELETON_GROUP)
+	if is_instance_valid(skeleton):
+		skeleton.necromancer_posessed.emit(true)
+		velocity = Vector2.ZERO
+		marker.visible = false

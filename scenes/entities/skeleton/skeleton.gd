@@ -3,22 +3,21 @@ extends CharacterBody2D
 
 const PLAYER_GROUP: StringName = "player"
 const ENEMY_GROUP: StringName = "enemy"
-const SPEED: int = 100
+var SPEED: int = 140
 const COMBAT_RANGE: int = 16
 
 const ACTION_MOVE_UP: StringName = "move_up" 
 const ACTION_MOVE_DOWN: StringName = "move_down"
 const ACTION_MOVE_LEFT: StringName = "move_left"
 const ACTION_MOVE_RIGHT: StringName = "move_right"
-
-
+@onready var marker: Sprite2D = $Marker
+signal necromancer_posessed(value: bool)
 
 var state_machine := CallableStateMachine.new()
 var target_position : Vector2
 var last_faced_direction: Vector2
 var enemy_target: CharacterBody2D
 
-@onready var marker: Sprite2D = $Marker
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var target_acquisition_timer: Timer = $TargetAcquisitionTimer
 @onready var health_component: HealthComponent = $HealthComponent
@@ -34,6 +33,8 @@ func _ready() -> void:
 	target_acquisition_timer.timeout.connect(_on_target_acquisition_timeout)
 
 	health_component.died.connect(_on_died)
+
+	necromancer_posessed.connect(_on_necromancer_posessed)
 func _process(_delta: float) -> void:
 	state_machine.update()
 	
@@ -41,8 +42,8 @@ func state_follow() -> void:
 	marker.visible = false
 	var direction = global_position.direction_to(target_position)
 
-	if is_instance_valid(enemy_target):
-		state_machine.change_state(state_attack)
+	#if is_instance_valid(enemy_target):
+	#	state_machine.change_state(state_attack)
 
 	if global_position.distance_to(target_position) > 0.5:
 		velocity = direction * SPEED
@@ -66,6 +67,7 @@ func _on_target_acquisition_timeout() -> void:
 	target_acquisition_timer.start(randf_range(1, 2))
 
 func state_posessed() -> void:
+	marker.modulate = Color(1, 1, 0)
 	velocity = GameManager.get_direction() * SPEED
 	move_and_slide()
 	marker.visible = true
@@ -74,22 +76,26 @@ func state_posessed() -> void:
 	for enemy in enemies:
 		if enemy_target == null:
 			enemy_target = enemy
-			print("Target acquired: ", enemy_target.name)
 			continue
-		
-		if enemy.global_position.distance_squared_to(global_position) < enemy_target.global_position.distance_squared_to(global_position):
-			enemy_target = enemy
+		if is_instance_valid(enemy_target):
 
-		
-	print(enemy_target.global_position.distance_to(global_position))
-	if enemy_target.global_position.distance_to(global_position) < COMBAT_RANGE:
-		state_machine.change_state(state_attack)
+			if enemy.global_position.distance_squared_to(global_position) < enemy_target.global_position.distance_squared_to(global_position):
+				enemy_target = enemy
 
+	if is_instance_valid(enemy_target):
+		if enemy_target.global_position.distance_to(global_position) < COMBAT_RANGE && state_machine.current_state == "state_posessed":
+			state_machine.change_state(state_attack)
 
 	
 
 func state_attack() -> void:
-	velocity = Vector2.ZERO
+	SPEED = 120 
+	move_and_slide()
+	marker.modulate = Color(1, 0, 0)
+	if is_instance_valid(enemy_target):
+		if enemy_target.global_position.distance_to(global_position) > COMBAT_RANGE && state_machine.current_state == "state_attack":
+			state_machine.change_state(state_posessed)
+
 	if !is_instance_valid(enemy_target):
 		state_machine.change_state(state_follow)
 		return
@@ -97,11 +103,15 @@ func state_attack() -> void:
 	if attack_timer.is_stopped():
 		enemy_target.health_component.damage(randf_range(.5, 1.5))
 		attack_timer.start(randf_range(0.1,0.2))
+	
 
 
-#func is_within_combat_range() -> bool:
-	#if !is_instance_valid():
-	#	return false
-	#pass
+
 func _on_died() -> void:
 	queue_free()
+
+func _on_necromancer_posessed(value: bool) -> void:
+	if value:
+		state_machine.change_state(state_posessed)
+	else:
+		state_machine.change_state(state_follow)

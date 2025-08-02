@@ -15,14 +15,17 @@ var current_target: CharacterBody2D
 func _ready():
 	state_machine.add_state(state_idle, Callable(), Callable())
 	#state_machine.add_state(state_follow, Callable(), Callable())
-	#state_machine.add_state(state_attack, Callable(), Callable())
+	state_machine.add_state(state_attack, Callable(), Callable())
 	#state_machine.set_initial_state(state_follow)
 	state_machine.add_state(state_normal, Callable(), Callable())
 	state_machine.set_initial_state(state_idle)
 
 	target_acquisition_timer.timeout.connect(_on_target_acquisition_timeout)
-
 	health_component.died.connect(_on_died)
+	health_component.health_changed.connect(_on_health_changed)
+
+func _on_health_changed(value: int) -> void:
+	print("Health changed to: ", value)
 func _process(_delta):
 	state_machine.update()
 	
@@ -45,7 +48,9 @@ func state_normal() -> void:
 	else:
 		global_position = current_target.global_position
 func state_idle() -> void:
-	velocity = Vector2.ZERO
+
+
+	
 	
 	if is_instance_valid(current_target):
 		state_machine.change_state(state_normal)
@@ -68,6 +73,10 @@ func acquire_target() -> void:
 	if target == null and is_instance_valid(skeleton):
 		target = skeleton
 	current_target = target
+
+
+func state_attack() -> void:
+	velocity = Vector2.ZERO
 
 func _on_died() -> void:
 	queue_free()

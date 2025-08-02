@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://xyt3hmlpexlr"]
+[gd_scene load_steps=4 format=3 uid="uid://xyt3hmlpexlr"]
 
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="2_sl2e5"]
-[ext_resource type="PackedScene" uid="uid://llqkqgoxonrh" path="res://scripts/components/posess_component.tscn" id="3_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="3_6m72w"]
 
 [node name="World" type="Node2D"]
@@ -20,7 +19,3 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("3_6m72w")]
-
-[node name="PosessComponent" parent="." node_paths=PackedStringArray("necromancer", "skeleton") instance=ExtResource("3_1fp7r")]
-necromancer = NodePath("../YSortOrigin/Necromancer")
-skeleton = NodePath("../YSortOrigin/Skeleton")

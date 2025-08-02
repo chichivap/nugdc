@@ -24,7 +24,7 @@ shape = SubResource("CircleShape2D_r6wmr")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(5.96046e-08, 2)
+position = Vector2(7, 30)
 scale = Vector2(0.961538, 1)
 texture = ExtResource("2_sgqs0")
 
@@ -37,3 +37,8 @@ one_shot = true
 autostart = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
