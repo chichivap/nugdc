@@ -1,17 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtycjwyv8wu6m"]
+[gd_scene load_steps=12 format=3 uid="uid://dtycjwyv8wu6m"]
 
 [ext_resource type="Script" uid="uid://flnwe4yem7ew" path="res://scenes/entities/necromancer/necromancer.gd" id="1_vhpjt"]
 [ext_resource type="Texture2D" uid="uid://bgiba0eoinyn6" path="res://assets/Necromancer.png" id="1_xy2sp"]
 [ext_resource type="Texture2D" uid="uid://b4bqc6md82wq5" path="res://assets/ShadowNecromancer.png" id="3_qnrv5"]
 [ext_resource type="Texture2D" uid="uid://qa7tswhkgfw6" path="res://assets/Necromancer Marker.png" id="4_gam6g"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="5_qnmsl"]
-[ext_resource type="Script" uid="uid://c4lsrb7e5t66o" path="res://scenes/entities/necromancer/skill_bar.gd" id="6_0skyk"]
 [ext_resource type="PackedScene" uid="uid://dxlulvubi825b" path="res://ui/spell_button.tscn" id="6_i7lwb"]
+[ext_resource type="Script" uid="uid://cypbrb7fnbqa4" path="res://scenes/entities/necromancer/ui.gd" id="6_k2g2j"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="8_hfd7k"]
+[ext_resource type="Script" uid="uid://by66qdxul28u0" path="res://scenes/entities/necromancer/mana_component.gd" id="8_k2g2j"]
+[ext_resource type="Script" uid="uid://c18622n8g55xm" path="res://scenes/entities/necromancer/mana_ui.gd" id="9_10vsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vhpjt"]
 radius = 3.0
 
 [node name="Necromancer" type="CharacterBody2D" groups=["player"]]
+collision_mask = 8
 script = ExtResource("1_vhpjt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -37,51 +41,47 @@ texture = ExtResource("4_gam6g")
 [node name="SpriteFlipManager" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("5_qnmsl")]
 actor = NodePath("..")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="ManaComponent" type="Node" parent="."]
+script = ExtResource("8_k2g2j")
 
-[node name="SkillBar" type="HBoxContainer" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -41.0
-offset_right = 20.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("6_0skyk")
+[node name="SpellUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_k2g2j")
+player = NodePath("..")
 
-[node name="SpellButton" parent="UI/SkillBar" instance=ExtResource("6_i7lwb")]
-layout_mode = 2
+[node name="SpellButton" parent="SpellUI" instance=ExtResource("6_i7lwb")]
+custom_minimum_size = Vector2(16, 16)
+offset_left = 217.0
+offset_top = 277.0
+offset_right = 233.0
+offset_bottom = 293.0
+scale = Vector2(1, 1)
+size_flags_horizontal = 8
+metadata/_edit_group_ = true
 
-[node name="Cooldown" parent="UI/SkillBar/SpellButton" index="0"]
-offset_right = 39.945
-offset_bottom = 40.23
+[node name="SpellButton2" parent="SpellUI" instance=ExtResource("6_i7lwb")]
+custom_minimum_size = Vector2(16, 16)
+offset_left = 233.0
+offset_top = 277.0
+offset_right = 249.0
+offset_bottom = 293.0
+scale = Vector2(1, 1)
+metadata/_edit_group_ = true
 
-[node name="SpellButton2" parent="UI/SkillBar" instance=ExtResource("6_i7lwb")]
-layout_mode = 2
+[node name="Time" parent="SpellUI/SpellButton2" index="2"]
+text = ""
 
-[node name="Cooldown" parent="UI/SkillBar/SpellButton2" index="0"]
-offset_right = 39.945
-offset_bottom = 40.23
+[node name="ManaUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("mana_component")]
+script = ExtResource("9_10vsp")
+mana_component = NodePath("../ManaComponent")
+metadata/_custom_type_script = "uid://c18622n8g55xm"
 
-[node name="SpellButton3" parent="UI/SkillBar" instance=ExtResource("6_i7lwb")]
-layout_mode = 2
+[node name="Mana" type="Label" parent="ManaUI"]
+offset_left = 260.0
+offset_top = 151.0
+offset_right = 315.0
+offset_bottom = 174.0
+text = "Mana: 10/10"
+label_settings = ExtResource("8_hfd7k")
 
-[node name="Cooldown" parent="UI/SkillBar/SpellButton3" index="0"]
-offset_right = 39.945
-offset_bottom = 40.23
-
-[node name="SpellButton4" parent="UI/SkillBar" instance=ExtResource("6_i7lwb")]
-layout_mode = 2
-
-[node name="Cooldown" parent="UI/SkillBar/SpellButton4" index="0"]
-offset_right = 39.945
-offset_bottom = 40.23
-
-[editable path="UI/SkillBar/SpellButton"]
-[editable path="UI/SkillBar/SpellButton2"]
-[editable path="UI/SkillBar/SpellButton3"]
-[editable path="UI/SkillBar/SpellButton4"]
+[editable path="SpellUI/SpellButton"]
+[editable path="SpellUI/SpellButton2"]

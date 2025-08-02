@@ -1,5 +1,6 @@
+class_name SpellButton
 extends TextureButton
-@onready var cooldown: ProgressBar = $Cooldown
+@onready var cooldown: TextureProgressBar = $Cooldown1
 @onready var key: Label = $Key
 @onready var time: Label = $Time
 @onready var timer: Timer = $Timer

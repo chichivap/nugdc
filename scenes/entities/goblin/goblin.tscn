@@ -1,22 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1k3jmunabfsd"]
+[gd_scene load_steps=8 format=3 uid="uid://b1k3jmunabfsd"]
 
 [ext_resource type="Script" uid="uid://ctgowyoxpi0sg" path="res://scenes/entities/goblin/goblin.gd" id="1_afvh2"]
-[ext_resource type="Texture2D" uid="uid://cgdk5hrjsr7bn" path="res://assets/Goblin.png" id="1_r6wmr"]
+[ext_resource type="Texture2D" uid="uid://dc52hlld5wwsq" path="res://assets/Goblin/Goblin.png" id="2_5xj7o"]
 [ext_resource type="Texture2D" uid="uid://bvltoru1ax7x3" path="res://assets/Goblin/ShadowGoblin.png" id="2_sgqs0"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="4_u53eg"]
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="5_alksd"]
+[ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="6_5xj7o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6wmr"]
 radius = 3.0
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_afvh2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-6, -13)
-texture = ExtResource("1_r6wmr")
+position = Vector2(-8, -13)
+texture = ExtResource("2_5xj7o")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,7 +25,7 @@ shape = SubResource("CircleShape2D_r6wmr")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(7, 30)
+position = Vector2(4.76837e-07, 7)
 scale = Vector2(0.961538, 1)
 texture = ExtResource("2_sgqs0")
 
@@ -36,9 +37,16 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
-
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_5xj7o")]
+offset_left = -7.0
+offset_top = -18.0
+offset_right = 33.0
+offset_bottom = 22.0
+health_component = NodePath("../HealthComponent")

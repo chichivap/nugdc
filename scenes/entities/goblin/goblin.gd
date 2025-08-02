@@ -3,11 +3,19 @@ extends CharacterBody2D
 
 const PLAYER_GROUP: StringName = "player"
 const SKELETON_GROUP: StringName = "skeleton"
-const SPEED: int = 50
+const COMBAT_RANGE: int = 8
+const SPEED: int = 100
+
+@export var min_damage: float = 0.5
+@export var max_damage: float = 2
+
+@export var min_attack_delay: float = 0.1
+@export var max_attack_delay: float = 0.2
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var target_acquisition_timer: Timer = $TargetAcquisitionTimer
 @onready var health_component: HealthComponent = $HealthComponent
-
+@onready var attack_timer: Timer = $AttackTimer
 var state_machine := CallableStateMachine.new()
 var last_faced_direction: Vector2
 var current_target: CharacterBody2D
@@ -16,24 +24,21 @@ func _ready():
 	state_machine.add_state(state_idle, Callable(), Callable())
 	#state_machine.add_state(state_follow, Callable(), Callable())
 	state_machine.add_state(state_attack, Callable(), Callable())
-	#state_machine.set_initial_state(state_follow)
 	state_machine.add_state(state_normal, Callable(), Callable())
-	state_machine.set_initial_state(state_idle)
+	state_machine.set_initial_state(state_normal)
 
 	target_acquisition_timer.timeout.connect(_on_target_acquisition_timeout)
 	health_component.died.connect(_on_died)
-	health_component.health_changed.connect(_on_health_changed)
+	#health_component.health_changed.connect(_on_health_changed)
 
-func _on_health_changed(value: int) -> void:
-	print("Health changed to: ", value)
+
 func _process(_delta):
 	state_machine.update()
 	
-
 func state_normal() -> void:
-	if !is_instance_valid(current_target):
+	if !is_instance_valid(current_target) || current_target.state_machine.current_state == "state_corpse":
 		acquire_target()
-		if !is_instance_valid(current_target):
+		if !is_instance_valid(current_target) || current_target.state_machine.current_state == "state_corpse":
 			state_machine.change_state(state_idle)
 			return
 	
@@ -41,22 +46,23 @@ func state_normal() -> void:
 	#velocity = direction * SPEED
 
 
-
 	if global_position.distance_to(current_target.global_position) > 0.5:
 		velocity = direction * SPEED
 		move_and_slide()
 	else:
 		global_position = current_target.global_position
+
+	if is_instance_valid(current_target):
+		if current_target.global_position.distance_to(global_position) < COMBAT_RANGE && state_machine.current_state == "state_normal":
+			state_machine.change_state(state_attack)
 func state_idle() -> void:
-
-
-	
-	
+	velocity = Vector2.ZERO
+	#move_and_slide()
 	if is_instance_valid(current_target):
 		state_machine.change_state(state_normal)
+	
 
 
-		
 
 func get_player() -> CharacterBody2D:
 	return get_tree().get_first_node_in_group(PLAYER_GROUP)
@@ -76,7 +82,19 @@ func acquire_target() -> void:
 
 
 func state_attack() -> void:
-	velocity = Vector2.ZERO
+	move_and_slide()
+
+	if is_instance_valid(current_target):
+		if current_target.global_position.distance_to(global_position) > COMBAT_RANGE && state_machine.current_state == "state_attack":
+			state_machine.change_state(state_normal)
+
+	if !is_instance_valid(current_target):
+		state_machine.change_state(state_idle)
+		return
+
+	if attack_timer.is_stopped():
+		current_target.health_component.damage(randf_range(min_damage, max_damage))
+		attack_timer.start(randf_range(min_attack_delay,max_attack_delay))
 
 func _on_died() -> void:
 	queue_free()

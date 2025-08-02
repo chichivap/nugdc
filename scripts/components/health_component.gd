@@ -1,12 +1,12 @@
 class_name HealthComponent
 extends Node
 
-@export var max_health: int = 10
+@export var max_health: float = 10.0
 
 signal died
 signal health_changed(value)
 
-var current_health: int
+var current_health: float
 
 func _enter_tree() -> void:
 	current_health = max_health

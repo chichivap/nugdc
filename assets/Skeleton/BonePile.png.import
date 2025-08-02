@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgdk5hrjsr7bn"
-path="res://.godot/imported/Goblin.png-d9f9012004c699d5afd4dec6cac8bf1e.ctex"
+uid="uid://bae5vk4bf6ry3"
+path="res://.godot/imported/BonePile.png-51ebe79412cd9691b8fc01f9ca2ae4a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Goblin.png"
-dest_files=["res://.godot/imported/Goblin.png-d9f9012004c699d5afd4dec6cac8bf1e.ctex"]
+source_file="res://assets/Skeleton/BonePile.png"
+dest_files=["res://.godot/imported/BonePile.png-51ebe79412cd9691b8fc01f9ca2ae4a8.ctex"]
 
 [params]
 

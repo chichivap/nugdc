@@ -1,21 +1,113 @@
-[gd_scene load_steps=4 format=3 uid="uid://xyt3hmlpexlr"]
+[gd_scene load_steps=12 format=4 uid="uid://xyt3hmlpexlr"]
 
+[ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="3_6m72w"]
+[ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="3_v5dby"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="4_t5ptc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m72w"]
+size = Vector2(240, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5dby"]
+size = Vector2(19.5, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5ptc"]
+size = Vector2(18.75, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq33v"]
+size = Vector2(212.75, 16.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bq33v"]
+font = ExtResource("3_v5dby")
+font_size = 10
+font_color = Color(0.0588235, 0.529412, 0.843137, 1)
 
 [node name="World" type="Node2D"]
 
+[node name="Wall" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+position = Vector2(28, 8)
+tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAA=")
+tile_set = ExtResource("1_6m72w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(120, 6)
+shape = SubResource("RectangleShape2D_6m72w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(10.25, 86)
+shape = SubResource("RectangleShape2D_v5dby")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(230.375, 86)
+shape = SubResource("RectangleShape2D_t5ptc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(119.625, 151.25)
+shape = SubResource("RectangleShape2D_bq33v")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = -3
+position = Vector2(28, 8)
+tile_map_data = PackedByteArray("AAACAAgAAAADAAIAAAADAAIAAAADAAIAAAADAAQAAAACAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAADAAIAAAAGAAMAAAADAAIAAAAGAAQAAAABAAIAAAAGAAYAAAACAAIAAAAHAAIAAAACAAIAAAAIAAIAAAADAAIAAAAIAAQAAAABAAIAAAAKAAgAAAABAAIAAAAMAAQAAAABAAIAAAA=")
+tile_set = ExtResource("1_6m72w")
+
 [node name="YSortOrigin" type="Node2D" parent="."]
 y_sort_enabled = true
+position = Vector2(28, 8)
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("1_dphjl")]
-position = Vector2(102, 76)
-collision_mask = 0
+position = Vector2(102, 90)
+
+[node name="SpellButton" parent="YSortOrigin/Necromancer/SpellUI" index="0"]
+offset_left = 285.0
+offset_top = 19.0
+offset_right = 301.0
+offset_bottom = 35.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SpellButton2" parent="YSortOrigin/Necromancer/SpellUI" index="1"]
+offset_left = 285.0
+offset_top = 36.0
+offset_right = 301.0
+offset_bottom = 52.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Mana" parent="YSortOrigin/Necromancer/ManaUI" index="0"]
+anchors_preset = -1
+offset_left = 284.0
+offset_top = 137.0
+offset_right = 304.0
+offset_bottom = 160.0
+text = "Man.
+"
+label_settings = SubResource("LabelSettings_bq33v")
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaNumber" type="Label" parent="YSortOrigin/Necromancer/ManaUI" index="1"]
+anchors_preset = -1
+offset_left = 284.0
+offset_top = 150.0
+offset_right = 309.0
+offset_bottom = 163.0
+text = "10/10"
+label_settings = ExtResource("4_t5ptc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Skeleton" parent="YSortOrigin" instance=ExtResource("2_sl2e5")]
 position = Vector2(67, 99)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 10
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("3_6m72w")]
+position = Vector2(-16, 55)
+
+[editable path="YSortOrigin/Necromancer"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton2"]

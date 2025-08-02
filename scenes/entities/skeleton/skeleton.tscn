@@ -1,22 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=10 format=3 uid="uid://bqvghd16833cq"]
 
-[ext_resource type="Texture2D" uid="uid://by0oa2cuqli5i" path="res://assets/Skeleton.png" id="1_py50p"]
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
+[ext_resource type="Texture2D" uid="uid://8jc3uxxajxvv" path="res://assets/Skeleton/Skeleton.png" id="2_rb0rj"]
 [ext_resource type="Texture2D" uid="uid://dgfcqhmlg62ig" path="res://assets/ShadowSkeleton.png" id="3_thk0v"]
 [ext_resource type="Texture2D" uid="uid://ct5k48s0sthx2" path="res://assets/Skeleton Marker.png" id="4_tem1c"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="5_kvfbh"]
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="6_yvqff"]
+[ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="7_rb0rj"]
+[ext_resource type="Texture2D" uid="uid://bae5vk4bf6ry3" path="res://assets/Skeleton/BonePile.png" id="8_d4gqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
 radius = 3.0
 
 [node name="Skeleton" type="CharacterBody2D" groups=["skeleton"]]
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_u58mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-6, -12)
-texture = ExtResource("1_py50p")
+position = Vector2(-9, -13)
+texture = ExtResource("2_rb0rj")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -48,3 +51,15 @@ texture = ExtResource("4_tem1c")
 actor = NodePath("..")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_yvqff")]
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_rb0rj")]
+offset_left = -6.0
+offset_top = -17.0
+offset_right = 34.0
+offset_bottom = 23.0
+health_component = NodePath("../HealthComponent")
+
+[node name="BonePile" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+texture = ExtResource("8_d4gqi")
