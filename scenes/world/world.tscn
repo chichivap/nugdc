@@ -91,7 +91,6 @@ label_settings = SubResource("LabelSettings_bq33v")
 metadata/_edit_use_anchors_ = true
 
 [node name="ManaNumber" type="Label" parent="YSortOrigin/Necromancer/ManaUI" index="1"]
-anchors_preset = -1
 offset_left = 284.0
 offset_top = 150.0
 offset_right = 309.0
@@ -106,7 +105,7 @@ collision_layer = 2
 collision_mask = 10
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("3_6m72w")]
-position = Vector2(-16, 55)
+position = Vector2(61, 56)
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]

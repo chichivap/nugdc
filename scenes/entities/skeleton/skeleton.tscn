@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=12 format=3 uid="uid://bqvghd16833cq"]
 
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
 [ext_resource type="Texture2D" uid="uid://8jc3uxxajxvv" path="res://assets/Skeleton/Skeleton.png" id="2_rb0rj"]
@@ -8,9 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="6_yvqff"]
 [ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="7_rb0rj"]
 [ext_resource type="Texture2D" uid="uid://bae5vk4bf6ry3" path="res://assets/Skeleton/BonePile.png" id="8_d4gqi"]
+[ext_resource type="Script" uid="uid://defq4lced13jk" path="res://scripts/components/corpse_spawner_component.gd" id="9_n7mv8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
 radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4gqi"]
+radius = 6.0
 
 [node name="Skeleton" type="CharacterBody2D" groups=["skeleton"]]
 collision_mask = 9
@@ -63,3 +67,15 @@ health_component = NodePath("../HealthComponent")
 visible = false
 position = Vector2(0, -5)
 texture = ExtResource("8_d4gqi")
+
+[node name="ResurrectionArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResurrectionArea"]
+visible = false
+shape = SubResource("CircleShape2D_d4gqi")
+
+[node name="CorpseSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_n7mv8")
+health_component = NodePath("../HealthComponent")

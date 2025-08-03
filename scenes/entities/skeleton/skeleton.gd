@@ -12,7 +12,6 @@ const ACTION_MOVE_LEFT: StringName = "move_left"
 const ACTION_MOVE_RIGHT: StringName = "move_right"
 
 signal necromancer_posessed(value: bool)
-signal resurrected
 
 var state_machine := CallableStateMachine.new()
 var target_position : Vector2
@@ -30,7 +29,6 @@ func _ready() -> void:
 	state_machine.add_state(state_follow, Callable(), Callable())
 	state_machine.add_state(state_posessed, Callable(), Callable())
 	state_machine.add_state(state_attack, Callable(), Callable())
-	state_machine.add_state(state_corpse, Callable(), Callable())
 	
 	state_machine.set_initial_state(state_follow)
 
@@ -39,7 +37,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 
 	necromancer_posessed.connect(_on_necromancer_posessed)
-	resurrected.connect(_on_resurrected)
+
 func _process(_delta: float) -> void:
 	state_machine.update()
 	
@@ -52,15 +50,12 @@ func state_follow() -> void:
 	marker.visible = false
 	var direction = global_position.direction_to(target_position)
 
-	#if is_instance_valid(enemy_target):
-	#	state_machine.change_state(state_attack)
 
 	if global_position.distance_to(target_position) > 0.5:
 		velocity = direction * SPEED
 		move_and_slide()
 	else:
 		global_position = target_position
-	print("state_follow")
 
 
 func get_player() -> CharacterBody2D:
@@ -121,17 +116,7 @@ func state_attack() -> void:
 	
 
 func _on_died() -> void:
-	state_machine.change_state(state_corpse)
-
-func state_corpse() -> void:
-	health_bar_component.progress_bar.visible = false
-
-	velocity = Vector2.ZERO
-
-	bone_pile.visible = true
-	sprite_2d.visible = false
-	#resurrected.connect(_on_resurrected)
-	
+	queue_free()
 	
 
 func _on_necromancer_posessed(value: bool) -> void:
@@ -141,12 +126,3 @@ func _on_necromancer_posessed(value: bool) -> void:
 		state_machine.change_state(state_posessed)
 	else:
 		state_machine.change_state(state_follow)
-
-func _on_resurrected() -> void:
-	bone_pile.visible = false
-	sprite_2d.visible = true
-	health_bar_component.progress_bar.visible = false
-	state_machine.change_state(state_follow)
-
-	health_component.current_health = health_component.max_health
-	
