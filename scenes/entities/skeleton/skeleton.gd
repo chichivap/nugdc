@@ -12,6 +12,7 @@ const ACTION_MOVE_LEFT: StringName = "move_left"
 const ACTION_MOVE_RIGHT: StringName = "move_right"
 
 signal necromancer_posessed(value: bool)
+signal ready_for_possess
 
 var state_machine := CallableStateMachine.new()
 var target_position : Vector2
@@ -26,6 +27,7 @@ var enemy_target: CharacterBody2D
 @onready var marker: Sprite2D = $Marker
 @onready var health_bar_component: HealthBarComponent = $HealthBarComponent
 func _ready() -> void:
+	necromancer_posessed.connect(_on_necromancer_posessed)
 	state_machine.add_state(state_follow, Callable(), Callable())
 	state_machine.add_state(state_posessed, Callable(), Callable())
 	state_machine.add_state(state_attack, Callable(), Callable())
@@ -34,15 +36,19 @@ func _ready() -> void:
 
 	target_acquisition_timer.timeout.connect(_on_target_acquisition_timeout)
 
+	health_component.max_health = 10.0
 	health_component.died.connect(_on_died)
 
-	necromancer_posessed.connect(_on_necromancer_posessed)
+	
+
+	add_to_group("skeleton")
+	ready_for_possess.emit()
 
 func _process(_delta: float) -> void:
 	state_machine.update()
+
 	
-func state_follow() -> void:
-	
+func state_follow() -> void:	
 	bone_pile.visible = false
 	sprite_2d.visible = true
 	if health_component.current_health <= 0:
@@ -51,12 +57,13 @@ func state_follow() -> void:
 	var direction = global_position.direction_to(target_position)
 
 
+
 	if global_position.distance_to(target_position) > 0.5:
 		velocity = direction * SPEED
 		move_and_slide()
 	else:
 		global_position = target_position
-
+	
 
 func get_player() -> CharacterBody2D:
 	return get_tree().get_first_node_in_group(PLAYER_GROUP)
@@ -104,7 +111,7 @@ func state_attack() -> void:
 	marker.modulate = Color(1, 0, 0)
 	if is_instance_valid(enemy_target):
 		if enemy_target.global_position.distance_to(global_position) > COMBAT_RANGE && state_machine.current_state == "state_attack":
-			state_machine.change_state(state_posessed)
+			state_machine.change_state(state_follow)
 
 	if !is_instance_valid(enemy_target):
 		state_machine.change_state(state_follow)
@@ -120,9 +127,12 @@ func _on_died() -> void:
 	
 
 func _on_necromancer_posessed(value: bool) -> void:
+
 	if health_component.current_health <= 0:
 		return
+
 	if value:
 		state_machine.change_state(state_posessed)
 	else:
 		state_machine.change_state(state_follow)
+	

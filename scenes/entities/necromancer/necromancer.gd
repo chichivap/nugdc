@@ -21,6 +21,9 @@ var resurrection_shape_shape: CircleShape2D
 var last_faced_direction: Vector2
 var state_machine := CallableStateMachine.new()
 
+
+var skeleton_status: bool
+
 var resurrection_tween: Tween
 var corpse: Corpse
 func _process(_delta: float) -> void:
@@ -36,6 +39,8 @@ func _ready() -> void:
 	resurrection_area.area_entered.connect(_on_resurrection_area_entered)
 
 	resurrection_shape_shape = resurrection_shape.shape
+	if is_instance_valid(get_skeleton):
+		get_skeleton().health_component.died.connect(_on_skeleton_died)
 	
 
 
@@ -49,23 +54,17 @@ func state_normal() -> void:
 
 
 func state_posessed() -> void:
-	var skeleton: Skeleton = get_tree().get_first_node_in_group(SKELETON_GROUP)
+	var skeleton: Skeleton = get_skeleton()
 	if !is_instance_valid(skeleton):
 		state_machine.change_state(state_normal)
 		return
 	if skeleton.health_component.current_health <= 0:
 		state_machine.change_state(state_normal)
-	if is_instance_valid(skeleton):
-		skeleton.necromancer_posessed.emit(true)
-		velocity = Vector2.ZERO
-		marker.visible = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("resurrect"):
-		is_resurrecting = true
-	elif event.is_action_released("resurrect"):
-		if is_resurrecting:
-			end_res()
+	skeleton.necromancer_posessed.emit(true)
+	velocity = Vector2.ZERO
+	marker.visible = false
+
 
 func state_res() -> void:
 	is_resurrecting = true
@@ -89,10 +88,20 @@ func end_res() -> void:
 	if is_instance_valid(corpse):
 		corpse.resurrect()
 	corpse = null
-	state_machine.change_state(state_normal)
 
+	var skeleton: Skeleton = get_tree().get_first_node_in_group(SKELETON_GROUP)
+	if !is_instance_valid(skeleton):
+		return
+	skeleton_status = true
+	skeleton.add_to_group("skeleton")
 
 
 func _on_resurrection_area_entered(other_area: Area2D) -> void:
 	if other_area.owner is Corpse:
 		corpse = other_area.owner
+
+func get_skeleton() -> Skeleton:
+	return get_tree().get_first_node_in_group(SKELETON_GROUP)
+
+func _on_skeleton_died() -> void:
+	skeleton_status = false

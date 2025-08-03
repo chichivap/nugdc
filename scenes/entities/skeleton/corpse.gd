@@ -15,4 +15,5 @@ func resurrect() -> void:
 	var skeleton = SKELETON_SCENE.instantiate() as CharacterBody2D
 	skeleton.global_position = global_position
 	get_parent().add_child(skeleton)
+	skeleton.add_to_group("skeleton")
 	queue_free()

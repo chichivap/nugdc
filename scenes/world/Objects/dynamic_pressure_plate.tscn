@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1sq50phpnatl"]
+
+[ext_resource type="Script" uid="uid://rypwh7qeb0ii" path="res://scenes/world/Objects/dynamic_pressure_plate.gd" id="1_ajmk4"]
+[ext_resource type="Texture2D" uid="uid://bd8ud06inh0hr" path="res://assets/Tileset/Trapdoors/PressurePlate1.png" id="2_oxjkd"]
+[ext_resource type="Texture2D" uid="uid://blhm5xgt2q10j" path="res://assets/Tileset/Trapdoors/PressurePlate2.png" id="3_2en4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4k02h"]
+size = Vector2(16, 15)
+
+[node name="DynamicPressurePlate" type="Node2D"]
+z_index = -3
+script = ExtResource("1_ajmk4")
+
+[node name="Normal" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("2_oxjkd")
+centered = false
+
+[node name="Pressed" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("3_2en4a")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 7.5)
+shape = SubResource("RectangleShape2D_4k02h")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

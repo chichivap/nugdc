@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://xyt3hmlpexlr"]
+[gd_scene load_steps=8 format=4 uid="uid://xyt3hmlpexlr"]
 
 [ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="1_dphjl"]
-[ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="2_sl2e5"]
-[ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="3_6m72w"]
-[ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="3_v5dby"]
-[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="4_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="6_t5ptc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6m72w"]
 size = Vector2(240, 12)
@@ -18,11 +15,6 @@ size = Vector2(18.75, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bq33v"]
 size = Vector2(212.75, 16.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_bq33v"]
-font = ExtResource("3_v5dby")
-font_size = 10
-font_color = Color(0.0588235, 0.529412, 0.843137, 1)
 
 [node name="World" type="Node2D"]
 
@@ -66,46 +58,13 @@ position = Vector2(28, 8)
 position = Vector2(102, 90)
 
 [node name="SpellButton" parent="YSortOrigin/Necromancer/SpellUI" index="0"]
-offset_left = 285.0
-offset_top = 19.0
-offset_right = 301.0
-offset_bottom = 35.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SpellButton2" parent="YSortOrigin/Necromancer/SpellUI" index="1"]
-offset_left = 285.0
-offset_top = 36.0
-offset_right = 301.0
-offset_bottom = 52.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Mana" parent="YSortOrigin/Necromancer/ManaUI" index="0"]
-anchors_preset = -1
-offset_left = 284.0
-offset_top = 137.0
-offset_right = 304.0
-offset_bottom = 160.0
-text = "Man.
-"
-label_settings = SubResource("LabelSettings_bq33v")
-metadata/_edit_use_anchors_ = true
-
-[node name="ManaNumber" type="Label" parent="YSortOrigin/Necromancer/ManaUI" index="1"]
-offset_left = 284.0
-offset_top = 150.0
-offset_right = 309.0
-offset_bottom = 163.0
-text = "10/10"
-label_settings = ExtResource("4_t5ptc")
-metadata/_edit_use_anchors_ = true
-
-[node name="Skeleton" parent="YSortOrigin" instance=ExtResource("2_sl2e5")]
-position = Vector2(67, 99)
-collision_layer = 2
-collision_mask = 10
-
-[node name="Goblin" parent="YSortOrigin" instance=ExtResource("3_6m72w")]
-position = Vector2(61, 56)
+[node name="Corpse" parent="YSortOrigin" instance=ExtResource("6_t5ptc")]
+position = Vector2(147, 95)
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]

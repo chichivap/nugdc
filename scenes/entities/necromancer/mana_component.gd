@@ -1,7 +1,7 @@
 class_name ManaComponent
 extends Node
 
-@export var max_mana: float = 10
+@export var max_mana: float = 100
 
 signal mana_changed(value)
 

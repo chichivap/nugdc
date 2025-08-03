@@ -15,6 +15,11 @@ run/main_scene="uid://xyt3hmlpexlr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameEvent="*res://scripts/utils/game_events.gd"
+PostProcessing="*res://ui/shader/post_processing/post_processing.tscn"
+
 [display]
 
 window/size/viewport_width=320
@@ -69,6 +74,8 @@ resurrect={
 2d_physics/layer_3="Goblin"
 2d_physics/layer_4="Wall"
 2d_physics/layer_5="Corpse"
+2d_physics/layer_6="Trapdoors"
+2d_physics/layer_7="PressurePlate"
 
 [rendering]
 

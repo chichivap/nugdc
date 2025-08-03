@@ -15,4 +15,4 @@ func cast_spell(target) -> void:
 		print("Not enough mana to cast the spell.")
 		allowed = false
 		return
-	target.mana_component.cast(mana_cost)
+
