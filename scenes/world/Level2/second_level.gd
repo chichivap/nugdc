@@ -1,5 +1,7 @@
 extends Node2D
 
+const LEVEL_ID = 2
+
 @onready var trapdoor: Trapdoor = $YSortOrigin/Trapdoor
 @onready var permanent_pressure_plate: PermanentPressurePlate = $YSortOrigin/PermanentPressurePlate
 @onready var skill_layer: CanvasLayer = $YSortOrigin/Necromancer/SpellUI
@@ -13,3 +15,7 @@ func _process(_delta: float) -> void:
 		trapdoor.open()
 	else:
 		trapdoor.close()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("restart"):
+		GameEvent.restart_level(LEVEL_ID)

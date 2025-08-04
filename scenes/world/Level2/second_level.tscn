@@ -25,7 +25,7 @@ tile_set = ExtResource("2_o0h1j")
 y_sort_enabled = true
 
 [node name="Corpse" parent="YSortOrigin" instance=ExtResource("2_hmh76")]
-position = Vector2(136, 58)
+position = Vector2(85, 141)
 
 [node name="Trapdoor" parent="YSortOrigin" instance=ExtResource("4_spxkc")]
 position = Vector2(223, 127)
@@ -38,6 +38,7 @@ z_index = -6
 position = Vector2(145, 128)
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("6_ok6h6")]
+z_index = 3
 position = Vector2(54, 98)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -50,9 +51,9 @@ polygon = PackedVector2Array(32, 19, 256, 19, 255, 33, 255, 42, 225, 34, 224, 80
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PossessSkillDesc" type="Label" parent="CanvasLayer"]
-offset_left = 260.0
+offset_left = 259.0
 offset_top = 63.0
-offset_right = 315.0
+offset_right = 314.0
 offset_bottom = 73.0
 text = "Possess - 1"
 label_settings = ExtResource("8_5wser")
@@ -64,6 +65,14 @@ offset_right = 319.0
 offset_bottom = 101.0
 text = "Resurrect
 Skeleton - 2"
+label_settings = ExtResource("8_5wser")
+
+[node name="Restart" type="Label" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 107.0
+offset_right = 299.0
+offset_bottom = 130.0
+text = "Restart - R"
 label_settings = ExtResource("8_5wser")
 
 [editable path="YSortOrigin/Necromancer"]

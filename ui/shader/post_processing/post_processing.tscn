@@ -18,7 +18,7 @@ shader_parameter/glow_radius = 1
 shader_parameter/glow_threshold = 0.4
 
 [node name="post_processing" type="CanvasLayer"]
-layer = 128
+layer = 127
 script = ExtResource("1_jolaa")
 
 [node name="shader_rect" type="ColorRect" parent="."]

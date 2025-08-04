@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtycjwyv8wu6m"]
+[gd_scene load_steps=16 format=3 uid="uid://dtycjwyv8wu6m"]
 
 [ext_resource type="Script" uid="uid://flnwe4yem7ew" path="res://scenes/entities/necromancer/necromancer.gd" id="1_vhpjt"]
 [ext_resource type="Texture2D" uid="uid://bgiba0eoinyn6" path="res://assets/Necromancer.png" id="1_xy2sp"]
@@ -23,8 +23,11 @@ font_color = Color(0.0588235, 0.529412, 0.843137, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_10vsp"]
 radius = 48.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqink"]
+radius = 48.0
+
 [node name="Necromancer" type="CharacterBody2D" groups=["player"]]
-z_index = 6
+z_index = 1
 collision_mask = 8
 script = ExtResource("1_vhpjt")
 
@@ -108,6 +111,16 @@ collision_mask = 16
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_10vsp")
 disabled = true
+
+[node name="PossessArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PossessArea"]
+shape = SubResource("CircleShape2D_qqink")
+
+[connection signal="body_entered" from="PossessArea" to="." method="_on_possess_area_body_entered"]
+[connection signal="body_exited" from="PossessArea" to="." method="_on_possess_area_body_exited"]
 
 [editable path="SpellUI/SpellButton"]
 [editable path="SpellUI/SpellButton2"]

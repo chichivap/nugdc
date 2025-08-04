@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://8w750f526cwq" path="res://sound/effects/pressureplate.wav" id="4_nbar0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k02h"]
-size = Vector2(20, 19)
+size = Vector2(16, 15)
 
 [node name="DynamicPressurePlate" type="Node2D"]
 z_index = -3

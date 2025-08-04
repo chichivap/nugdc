@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://e62ymomksdxc" path="res://assets/Tileset/Trapdoors/OpenedTrapDoor.png" id="2_c63ym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63ym"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [node name="Trapdoor" type="Node2D"]
 script = ExtResource("1_61sp6")
@@ -21,7 +21,6 @@ centered = false
 
 [node name="PlayerDetectionArea2D" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea2D"]
 position = Vector2(8, 8)

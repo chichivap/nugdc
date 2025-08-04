@@ -28,6 +28,8 @@ var skeleton_status: bool
 
 var resurrection_tween: Tween
 var corpse: Corpse
+
+var can_possess: bool = false
 func _process(_delta: float) -> void:
 	state_machine.update()
 	if should_draw_circle:
@@ -127,3 +129,14 @@ func _draw() -> void:
 	
 func distance_to_skeleton() -> float:
 	return global_position.distance_to(get_skeleton().global_position)
+
+
+
+func _on_possess_area_body_entered(body: CharacterBody2D) -> void:
+	if body is Skeleton:
+		can_possess = true
+
+
+func _on_possess_area_body_exited(body: CharacterBody2D) -> void:
+	if body is Skeleton:
+		can_possess = false

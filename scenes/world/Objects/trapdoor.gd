@@ -23,7 +23,7 @@ func close() -> void:
 
 
 func _on_player_detection_area_2d_body_entered(body:Node2D) -> void:
-	if body is Necromancer or Skeleton:
+	if body is Necromancer:
 		next_level()
 
 func next_level():

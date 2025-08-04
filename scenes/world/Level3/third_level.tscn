@@ -16,9 +16,11 @@ script = ExtResource("1_x52e1")
 y_sort_enabled = true
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_tj5bp")]
+z_index = 3
 position = Vector2(60, 89)
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("7_vpudw")]
+y_sort_enabled = true
 position = Vector2(149, 90)
 
 [node name="SkeletonPermPressurePlate" parent="YSortOrigin" instance=ExtResource("3_l75yh")]
@@ -32,7 +34,7 @@ position = Vector2(135, 32)
 position = Vector2(224, 80)
 
 [node name="Skeleton" parent="YSortOrigin" instance=ExtResource("7_w3ugv")]
-z_index = 7
+y_sort_enabled = true
 position = Vector2(61, 104)
 
 [node name="Wall" type="TileMapLayer" parent="."]

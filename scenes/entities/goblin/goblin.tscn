@@ -13,9 +13,10 @@
 radius = 3.0
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
-z_index = 7
+z_index = 3
 collision_layer = 4
 collision_mask = 15
+motion_mode = 1
 script = ExtResource("1_afvh2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

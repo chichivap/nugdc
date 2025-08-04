@@ -12,7 +12,6 @@ const ACTION_MOVE_LEFT: StringName = "move_left"
 const ACTION_MOVE_RIGHT: StringName = "move_right"
 
 signal necromancer_posessed(value: bool)
-signal ready_for_possess
 
 var state_machine := CallableStateMachine.new()
 var target_position : Vector2
@@ -120,6 +119,7 @@ func state_attack() -> void:
 		enemy_target.health_component.damage(randf_range(.9, 2.5))
 		attack_timer.start(randf_range(0.4,0.5))
 		variable_pitch_audio_stream_player.play()
+		print("Skeleton attacked")
 	
 
 func _on_died() -> void:

@@ -25,28 +25,30 @@ tile_set = ExtResource("1_adanq")
 y_sort_enabled = true
 position = Vector2(28, 8)
 
-[node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_u4d67")]
-z_index = 4
-position = Vector2(33, 90)
-
 [node name="Trapdoor" parent="YSortOrigin" instance=ExtResource("3_bb5fv")]
 unique_name_in_owner = true
-position = Vector2(196, 120)
+position = Vector2(132, 24)
 
 [node name="DynamicPressurePlate1" parent="YSortOrigin" instance=ExtResource("5_gjnoo")]
 position = Vector2(100, 59)
 
 [node name="DynamicPressurePlate2" parent="YSortOrigin" instance=ExtResource("5_gjnoo")]
-position = Vector2(164, 121)
-
-[node name="Goblin" parent="YSortOrigin" instance=ExtResource("5_bb5fv")]
-position = Vector2(202, 38)
-
-[node name="Skeleton" parent="YSortOrigin" instance=ExtResource("7_gjnoo")]
-position = Vector2(32, 112)
+position = Vector2(148, 40)
 
 [node name="SkeletonPermPressurePlate" parent="YSortOrigin" instance=ExtResource("5_u4d67")]
 position = Vector2(100, 24)
+
+[node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_u4d67")]
+z_index = 3
+position = Vector2(37, 104)
+
+[node name="Goblin" parent="YSortOrigin" instance=ExtResource("5_bb5fv")]
+y_sort_enabled = true
+position = Vector2(203, 33)
+
+[node name="Skeleton" parent="YSortOrigin" instance=ExtResource("7_gjnoo")]
+y_sort_enabled = true
+position = Vector2(48, 47)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8

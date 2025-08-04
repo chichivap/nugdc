@@ -10,14 +10,19 @@ func _init(target) -> void:
 	mana_cost = 1
 
 func cast_spell(target) -> void:
-	super.cast_spell(target)
+	#super.cast_spell(target)
 	if !allowed:
 		return
+	if !target.can_possess:
+		return
+	
 	else:
 		if target.state_machine.current_state == "state_normal":
 			target.state_machine.change_state(target.state_posessed)
 			target.mana_component.cast(mana_cost)
+			super.cast_spell(target)
 		else:
 			target.state_machine.change_state(target.state_normal)
 			target.mana_component.cast(mana_cost)
+			super.cast_spell(target)
 	

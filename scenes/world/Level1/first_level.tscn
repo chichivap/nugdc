@@ -26,7 +26,7 @@ z_index = 4
 position = Vector2(33, 90)
 
 [node name="PermanentPressurePlate" parent="YSortOrigin" instance=ExtResource("4_hx0f6")]
-position = Vector2(100, 40)
+position = Vector2(21, 24)
 
 [node name="Trapdoor" parent="YSortOrigin" instance=ExtResource("3_u0kor")]
 unique_name_in_owner = true
