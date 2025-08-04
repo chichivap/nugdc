@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://npek0mnbykcy"]
+[gd_scene load_steps=9 format=4 uid="uid://npek0mnbykcy"]
 
 [ext_resource type="Script" uid="uid://dgh73nvxjfqyj" path="res://scenes/world/Level2/second_level.gd" id="1_xip67"]
 [ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="2_hmh76"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://sw0xowg80kyd" path="res://scenes/world/Objects/permanent_pressure_plate.tscn" id="5_wwma4"]
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="6_ok6h6"]
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://scenes/world/Objects/skeleton_perm_pressure_plate.tscn" id="7_hd7x4"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="8_5wser"]
 
 [node name="SecondLevel" type="Node2D"]
 script = ExtResource("1_xip67")
@@ -33,6 +34,7 @@ position = Vector2(223, 127)
 position = Vector2(224, 48)
 
 [node name="SkeletonPermPressurePlate" parent="YSortOrigin" instance=ExtResource("7_hd7x4")]
+z_index = -6
 position = Vector2(145, 128)
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("6_ok6h6")]
@@ -44,6 +46,25 @@ collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(32, 19, 256, 19, 255, 33, 255, 42, 225, 34, 224, 80, 207, 81, 207, 35, 177, 35, 177, 81, 158, 82, 158, 34, 128, 34, 128, 64, 111, 64, 112, 34, 96, 34, 97, 80, 79, 81, 80, 35, 48, 35, 48, 144, 96, 144, 96, 126, 113, 126, 113, 143, 128, 143, 127, 111, 145, 112, 145, 143, 175, 144, 175, 126, 192, 126, 193, 143, 240, 143, 240, 35, 255, 51, 256, 159, 33, 161)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PossessSkillDesc" type="Label" parent="CanvasLayer"]
+offset_left = 260.0
+offset_top = 63.0
+offset_right = 315.0
+offset_bottom = 73.0
+text = "Possess - 1"
+label_settings = ExtResource("8_5wser")
+
+[node name="ResSkillDesc" type="Label" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 78.0
+offset_right = 319.0
+offset_bottom = 101.0
+text = "Resurrect
+Skeleton - 2"
+label_settings = ExtResource("8_5wser")
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]

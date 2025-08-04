@@ -6,16 +6,17 @@ const SKELETON_GROUP: StringName = "skeleton"
 const COMBAT_RANGE: int = 8
 const SPEED: int = 100
 
-@export var min_damage: float = 0.5
-@export var max_damage: float = 2
+@export var min_damage: float = 0.4
+@export var max_damage: float = 1.8
 
-@export var min_attack_delay: float = 0.1
-@export var max_attack_delay: float = 0.2
+@export var min_attack_delay: float = 0.2
+@export var max_attack_delay: float = 0.4
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var target_acquisition_timer: Timer = $TargetAcquisitionTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var attack_timer: Timer = $AttackTimer
+@onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 var state_machine := CallableStateMachine.new()
 var last_faced_direction: Vector2
 var current_target: CharacterBody2D
@@ -95,6 +96,7 @@ func state_attack() -> void:
 	if attack_timer.is_stopped():
 		current_target.health_component.damage(randf_range(min_damage, max_damage))
 		attack_timer.start(randf_range(min_attack_delay,max_attack_delay))
+		variable_pitch_audio_stream_player.play()
 
 func _on_died() -> void:
 	queue_free()

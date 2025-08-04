@@ -4,7 +4,7 @@ extends TextureButton
 @onready var key: Label = $Key
 @onready var time: Label = $Time
 @onready var timer: Timer = $Timer
-
+@onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 var skill = null
 
 var change_key = "":
@@ -40,3 +40,4 @@ func _on_pressed() -> void:
 		timer.start()
 		disabled = true
 		set_process(true)
+		variable_pitch_audio_stream_player.play()

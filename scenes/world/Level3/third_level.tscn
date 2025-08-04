@@ -32,6 +32,7 @@ position = Vector2(135, 32)
 position = Vector2(224, 80)
 
 [node name="Skeleton" parent="YSortOrigin" instance=ExtResource("7_w3ugv")]
+z_index = 7
 position = Vector2(61, 104)
 
 [node name="Wall" type="TileMapLayer" parent="."]
@@ -44,6 +45,8 @@ tile_map_data = PackedByteArray("AAADAAcAAAABAAIAAAAEAAUAAAADAAIAAAAGAAUAAAAAAAI
 tile_set = ExtResource("2_3svjo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(32, 16, 255, 16, 255, 31, 252, 30, 81, 31, 83, 52, 68, 52, 68, 67, 50, 67, 50, 110, 66, 110, 66, 124, 82, 125, 82, 141, 206, 142, 206, 125, 222, 126, 222, 109, 238, 109, 239, 66, 221, 67, 221, 51, 205, 50, 206, 35, 254, 38, 255, 159, 35, 159)

@@ -26,6 +26,7 @@ var enemy_target: CharacterBody2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var marker: Sprite2D = $Marker
 @onready var health_bar_component: HealthBarComponent = $HealthBarComponent
+@onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 func _ready() -> void:
 	necromancer_posessed.connect(_on_necromancer_posessed)
 	state_machine.add_state(state_follow, Callable(), Callable())
@@ -39,10 +40,8 @@ func _ready() -> void:
 	health_component.max_health = 10.0
 	health_component.died.connect(_on_died)
 
-	
 
 	add_to_group("skeleton")
-	ready_for_possess.emit()
 
 func _process(_delta: float) -> void:
 	state_machine.update()
@@ -118,8 +117,9 @@ func state_attack() -> void:
 		return
 
 	if attack_timer.is_stopped():
-		enemy_target.health_component.damage(randf_range(.5, 1.5))
-		attack_timer.start(randf_range(0.1,0.2))
+		enemy_target.health_component.damage(randf_range(.9, 2.5))
+		attack_timer.start(randf_range(0.4,0.5))
+		variable_pitch_audio_stream_player.play()
 	
 
 func _on_died() -> void:
@@ -127,7 +127,6 @@ func _on_died() -> void:
 	
 
 func _on_necromancer_posessed(value: bool) -> void:
-
 	if health_component.current_health <= 0:
 		return
 

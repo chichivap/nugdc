@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NUGDC GameJam"
-run/main_scene="uid://xyt3hmlpexlr"
+run/main_scene="uid://3ghf3epre4kc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameEvent="*res://scripts/utils/game_events.gd"
 PostProcessing="*res://ui/shader/post_processing/post_processing.tscn"
+BackgroundMusic="*res://sound/background_music.tscn"
 
 [display]
 

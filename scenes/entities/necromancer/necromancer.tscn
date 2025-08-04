@@ -24,6 +24,7 @@ font_color = Color(0.0588235, 0.529412, 0.843137, 1)
 radius = 48.0
 
 [node name="Necromancer" type="CharacterBody2D" groups=["player"]]
+z_index = 6
 collision_mask = 8
 script = ExtResource("1_vhpjt")
 
@@ -52,6 +53,7 @@ actor = NodePath("..")
 
 [node name="ManaComponent" type="Node" parent="."]
 script = ExtResource("8_k2g2j")
+max_mana = 10.0
 
 [node name="SpellUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("6_k2g2j")

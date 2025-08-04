@@ -21,6 +21,8 @@ var resurrection_shape_shape: CircleShape2D
 var last_faced_direction: Vector2
 var state_machine := CallableStateMachine.new()
 
+var circle_color : Color = Color(0.21, 0.02, 0.36, 0.2)
+var should_draw_circle := false
 
 var skeleton_status: bool
 
@@ -28,6 +30,11 @@ var resurrection_tween: Tween
 var corpse: Corpse
 func _process(_delta: float) -> void:
 	state_machine.update()
+	if should_draw_circle:
+		queue_redraw()
+	if is_instance_valid(get_skeleton):
+		print(distance_to_skeleton())
+	
 
 
 func _ready() -> void:
@@ -67,6 +74,7 @@ func state_posessed() -> void:
 
 
 func state_res() -> void:
+	should_draw_circle = true
 	is_resurrecting = true
 	resurrection_shape_shape.radius = 0
 	resurrection_shape.disabled = false
@@ -77,10 +85,13 @@ func state_res() -> void:
 	var tween := create_tween()
 	tween.tween_property(resurrection_shape_shape, "radius", 48, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(end_res)
+	state_machine.change_state(state_normal)
 
 func end_res() -> void:
 	is_resurrecting = false
 	resurrection_shape.disabled = true
+	should_draw_circle = false
+	queue_redraw()
 
 	if resurrection_tween != null && resurrection_tween.is_valid():
 		resurrection_tween.kill()
@@ -95,6 +106,8 @@ func end_res() -> void:
 	skeleton_status = true
 	skeleton.add_to_group("skeleton")
 
+	
+	
 
 func _on_resurrection_area_entered(other_area: Area2D) -> void:
 	if other_area.owner is Corpse:
@@ -105,3 +118,12 @@ func get_skeleton() -> Skeleton:
 
 func _on_skeleton_died() -> void:
 	skeleton_status = false
+
+func _draw() -> void:
+	if should_draw_circle:
+		draw_circle(Vector2.ZERO, resurrection_shape_shape.radius, circle_color)
+		draw_arc(Vector2.ZERO, resurrection_shape_shape.radius, 0, TAU, 32, circle_color, 2.0)
+
+	
+func distance_to_skeleton() -> float:
+	return global_position.distance_to(get_skeleton().global_position)

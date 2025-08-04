@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=14 format=3 uid="uid://bqvghd16833cq"]
 
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
 [ext_resource type="Texture2D" uid="uid://8jc3uxxajxvv" path="res://assets/Skeleton/Skeleton.png" id="2_rb0rj"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="7_rb0rj"]
 [ext_resource type="Texture2D" uid="uid://bae5vk4bf6ry3" path="res://assets/Skeleton/BonePile.png" id="8_d4gqi"]
 [ext_resource type="Script" uid="uid://defq4lced13jk" path="res://scripts/components/corpse_spawner_component.gd" id="9_n7mv8"]
+[ext_resource type="AudioStream" uid="uid://dslr1cdw1tey1" path="res://sound/effects/hurt.wav" id="10_brsed"]
+[ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="11_6gwcx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
 radius = 4.0
@@ -17,6 +19,7 @@ radius = 4.0
 radius = 6.0
 
 [node name="Skeleton" type="CharacterBody2D" groups=["skeleton"]]
+z_index = 6
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
@@ -81,3 +84,8 @@ shape = SubResource("CircleShape2D_d4gqi")
 [node name="CorpseSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("9_n7mv8")
 health_component = NodePath("../HealthComponent")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_brsed")
+script = ExtResource("11_6gwcx")
+metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
