@@ -26,6 +26,9 @@ var enemy_target: CharacterBody2D
 @onready var marker: Sprite2D = $Marker
 @onready var health_bar_component: HealthBarComponent = $HealthBarComponent
 @onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
+@onready var possess_marker: Sprite2D = $PossessMarker
+@onready var attack_indicator: Sprite2D = $CanvasLayer/AttackIndicatior
+
 func _ready() -> void:
 	necromancer_posessed.connect(_on_necromancer_posessed)
 	state_machine.add_state(state_follow, Callable(), Callable())
@@ -40,6 +43,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 
 
+
 	add_to_group("skeleton")
 
 func _process(_delta: float) -> void:
@@ -47,6 +51,7 @@ func _process(_delta: float) -> void:
 
 	
 func state_follow() -> void:	
+	attack_indicator.visible = false
 	bone_pile.visible = false
 	sprite_2d.visible = true
 	if health_component.current_health <= 0:
@@ -78,6 +83,7 @@ func _on_target_acquisition_timeout() -> void:
 	target_acquisition_timer.start(randf_range(0.2, 0.6))
 
 func state_posessed() -> void:
+	attack_indicator.visible = false
 	bone_pile.visible = false
 	sprite_2d.visible = true
 	marker.modulate = Color(1, 1, 0)
@@ -119,7 +125,8 @@ func state_attack() -> void:
 		enemy_target.health_component.damage(randf_range(.9, 2.5))
 		attack_timer.start(randf_range(0.4,0.5))
 		variable_pitch_audio_stream_player.play()
-		print("Skeleton attacked")
+	attack_indicator.visible = true
+	
 	
 
 func _on_died() -> void:

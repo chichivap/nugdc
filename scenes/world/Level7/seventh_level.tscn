@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=4 uid="uid://debhycifde0ro"]
+
+[ext_resource type="Script" uid="uid://4y34hqfyahr7" path="res://scenes/world/Level7/seventh_level.gd" id="1_830pm"]
+[ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="1_cd76m"]
+[ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="2_sx8sd"]
+[ext_resource type="PackedScene" uid="uid://ccpx5di58b782" path="res://scenes/world/Objects/trapdoor.tscn" id="3_tx0nv"]
+[ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="4_tx0nv"]
+[ext_resource type="PackedScene" uid="uid://b1sq50phpnatl" path="res://scenes/world/Objects/dynamic_pressure_plate.tscn" id="5_ne3xy"]
+[ext_resource type="PackedScene" uid="uid://cvpsi182xdt5p" path="res://scenes/world/Objects/skeleton_barrier.tscn" id="6_vu1cg"]
+[ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="7_aeeqp"]
+[ext_resource type="PackedScene" uid="uid://sw0xowg80kyd" path="res://scenes/world/Objects/permanent_pressure_plate.tscn" id="8_vk3v7"]
+[ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="9_c145p"]
+
+[node name="SeventhLevel" type="Node2D"]
+script = ExtResource("1_830pm")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAAIAAAABAAIAAAAGAAIAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAADAAIAAAAHAAgAAAACAAIAAAAIAAcAAAACAAIAAAAJAAQAAAACAAIAAAAJAAUAAAAAAAIAAAAKAAMAAAABAAIAAAALAAUAAAAAAAIAAAAMAAQAAAACAAIAAAANAAMAAAABAAIAAAANAAYAAAADAAIAAAA=")
+tile_set = ExtResource("1_cd76m")
+
+[node name="Wall" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAACAAIAAAAAAAAAAAACAAkAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAIAAEAAAABAAAAAAAJAAEAAAABAAAAAAAKAAEAAAABAAAAAAALAAEAAAABAAAAAAAMAAEAAAAAAAAAAAANAAEAAAABAAAAAAAOAAEAAAABAAAAAAACAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAHAAMAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAABAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAABAAAAAAAFAAIAAAAAAAAAAAAHAAEAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAJAAYAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAA=")
+tile_set = ExtResource("1_cd76m")
+
+[node name="YSortOrigin" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(28, 8)
+
+[node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_sx8sd")]
+position = Vector2(33, 90)
+
+[node name="Trapdoor" parent="YSortOrigin" instance=ExtResource("3_tx0nv")]
+unique_name_in_owner = true
+position = Vector2(20, 24)
+
+[node name="Goblin" parent="YSortOrigin" instance=ExtResource("4_tx0nv")]
+position = Vector2(155, 35)
+
+[node name="DynamicPressurePlate" parent="YSortOrigin" instance=ExtResource("5_ne3xy")]
+position = Vector2(148, 41)
+
+[node name="SkeletonBarrier" parent="YSortOrigin" instance=ExtResource("6_vu1cg")]
+position = Vector2(108, 96)
+
+[node name="Corpse" parent="YSortOrigin" instance=ExtResource("7_aeeqp")]
+position = Vector2(75, 113)
+
+[node name="PermanentPressurePlate" parent="YSortOrigin" instance=ExtResource("8_vk3v7")]
+position = Vector2(196, 23)
+
+[node name="SkeletonPermPressurePlate" parent="YSortOrigin" instance=ExtResource("9_c145p")]
+position = Vector2(20, 120)
+
+[node name="Goblin2" parent="YSortOrigin" instance=ExtResource("4_tx0nv")]
+position = Vector2(204, 130)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(32, 16, 256, 16, 256, 32, 209, 32, 209, 81, 177, 81, 178, 114, 144, 114, 144, 95, 158, 95, 159, 63, 192, 63, 192, 29, 96, 30, 96, 47, 128, 47, 128, 113, 111, 114, 111, 65, 79, 65, 79, 32, 47, 32, 48, 146, 240, 144, 240, 35, 256, 36, 256, 160, 31, 159)
+
+[editable path="YSortOrigin/Necromancer"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton2"]

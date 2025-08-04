@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bd8ud06inh0hr" path="res://assets/Tileset/Trapdoors/PressurePlate1.png" id="2_oxjkd"]
 [ext_resource type="Texture2D" uid="uid://blhm5xgt2q10j" path="res://assets/Tileset/Trapdoors/PressurePlate2.png" id="3_2en4a"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="4_c6c14"]
-[ext_resource type="AudioStream" uid="uid://8w750f526cwq" path="res://sound/effects/pressureplate.wav" id="4_nbar0"]
+[ext_resource type="AudioStream" uid="uid://chxupwvvp16lj" path="res://sound/effects/click.wav" id="4_nbar0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k02h"]
 size = Vector2(16, 15)
@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_4k02h")
 
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nbar0")
+bus = &"sfx"
 script = ExtResource("4_c6c14")
 metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
 

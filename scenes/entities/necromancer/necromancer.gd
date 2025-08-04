@@ -22,6 +22,7 @@ var last_faced_direction: Vector2
 var state_machine := CallableStateMachine.new()
 
 var circle_color : Color = Color(0.21, 0.02, 0.36, 0.2)
+var circle_color_static : Color = Color(0.439, 0.4, 0.459, 0.2)
 var should_draw_circle := false
 
 var skeleton_status: bool
@@ -135,8 +136,16 @@ func distance_to_skeleton() -> float:
 func _on_possess_area_body_entered(body: CharacterBody2D) -> void:
 	if body is Skeleton:
 		can_possess = true
+		body.possess_marker.visible = true
+		body.marker.visible = false
 
 
 func _on_possess_area_body_exited(body: CharacterBody2D) -> void:
 	if body is Skeleton:
 		can_possess = false
+		body.possess_marker.visible = false
+		body.marker.visible = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip"):
+		GameEvent.skip_level()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://df0gy1qt27bv2" path="res://scenes/world/Objects/permanent_pressure_plate.gd" id="1_j67e1"]
 [ext_resource type="Texture2D" uid="uid://dyeclvrlkbofg" path="res://assets/Tileset/Trapdoors/PermPressurePlate2.png" id="2_qwlyg"]
 [ext_resource type="Texture2D" uid="uid://b57v7bqhtjbol" path="res://assets/Tileset/Trapdoors/PermPressurePlate1.png" id="3_361rd"]
-[ext_resource type="AudioStream" uid="uid://8w750f526cwq" path="res://sound/effects/pressureplate.wav" id="4_1uxp2"]
+[ext_resource type="AudioStream" uid="uid://chxupwvvp16lj" path="res://sound/effects/click.wav" id="4_1uxp2"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="5_ypnsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwlyg"]
@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_qwlyg")
 
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1uxp2")
+bus = &"sfx"
 script = ExtResource("5_ypnsa")
 metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
 

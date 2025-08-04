@@ -12,6 +12,6 @@ func _ready() -> void:
 func _on_mana_changed(value: float) -> void:
 	mana_label.text = "%d/%d" % [value, mana_component.max_mana]
 	if value <= 0:
-		mana_label.text = "0/10"
+		mana_label.text = "0/10" 
 	else:
 		mana_label.text = "%d/%d" % [value, mana_component.max_mana]

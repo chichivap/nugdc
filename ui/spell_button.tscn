@@ -67,6 +67,7 @@ vertical_alignment = 2
 
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wesm8")
+bus = &"sfx"
 script = ExtResource("5_hsskw")
 metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
 

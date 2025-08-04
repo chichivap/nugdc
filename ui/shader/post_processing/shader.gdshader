@@ -41,27 +41,27 @@ float vignette(vec2 uv){
 void fragment() {
 	// Base color
 	vec3 col = textureLod(screen_texture, SCREEN_UV, 0.0).rgb;
-	
+
 	// Chromatic aberration
 	// Multiplier used because the values are very sensitive
 	col.r = texture(screen_texture, SCREEN_UV + vec2(aberration_amount, 0.0) * aberration_mult).r;
 	col.g = texture(screen_texture, SCREEN_UV - vec2(aberration_amount, 0.0) * aberration_mult).g;
 	col.b = texture(screen_texture, SCREEN_UV).b;
-	
+
 	// Scanlines
 	float y_step = 1.0 / float(scanline_count);
 	if (mod(UV.y, y_step) < y_step / 2.0) {
 		col = mix(col, vec3(0.0), scanline_strength);
 	}
-	
+
 	// Vignette
 	col.rgb *= vignette(SCREEN_UV);
-	
+
 	// Noise
 	if (noise_intensity > 0.0) {
 		col.rgb += clamp(random(SCREEN_UV + fract(TIME)).x, 0.0, 1.0) * noise_intensity;
 	}
-	
+
 	// Glow
 	vec3 glow = vec3(0.0);
 	float count = 0.0;

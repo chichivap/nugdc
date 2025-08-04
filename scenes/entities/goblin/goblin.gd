@@ -6,10 +6,10 @@ const SKELETON_GROUP: StringName = "skeleton"
 const COMBAT_RANGE: int = 8
 const SPEED: int = 100
 
-@export var min_damage: float = 0.4
+@export var min_damage: float = 0.6
 @export var max_damage: float = 1.8
 
-@export var min_attack_delay: float = 0.2
+@export var min_attack_delay: float = 0.3
 @export var max_attack_delay: float = 0.4
 
 @onready var sprite_2d: Sprite2D = $Sprite2D

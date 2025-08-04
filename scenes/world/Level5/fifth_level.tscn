@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpx5di58b782" path="res://scenes/world/Objects/trapdoor.tscn" id="3_bb5fv"]
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="5_bb5fv"]
 [ext_resource type="PackedScene" uid="uid://b1sq50phpnatl" path="res://scenes/world/Objects/dynamic_pressure_plate.tscn" id="5_gjnoo"]
-[ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://scenes/world/Objects/skeleton_perm_pressure_plate.tscn" id="5_u4d67"]
+[ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="5_u4d67"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_gjnoo"]
 
 [node name="fifth_level" type="Node2D"]
@@ -39,7 +39,6 @@ position = Vector2(148, 40)
 position = Vector2(100, 24)
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_u4d67")]
-z_index = 3
 position = Vector2(37, 104)
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("5_bb5fv")]

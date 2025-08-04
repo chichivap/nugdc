@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://cj75bp0dc2bld"]
+[gd_scene load_steps=10 format=4 uid="uid://cj75bp0dc2bld"]
 
 [ext_resource type="Script" uid="uid://bagshydqeq54q" path="res://scenes/world/Level3/third_level.gd" id="1_x52e1"]
 [ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="2_3svjo"]
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="2_tj5bp"]
 [ext_resource type="PackedScene" uid="uid://ccpx5di58b782" path="res://scenes/world/Objects/trapdoor.tscn" id="3_35qqi"]
-[ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://scenes/world/Objects/skeleton_perm_pressure_plate.tscn" id="3_l75yh"]
+[ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="3_l75yh"]
 [ext_resource type="PackedScene" uid="uid://sw0xowg80kyd" path="res://scenes/world/Objects/permanent_pressure_plate.tscn" id="4_mnth8"]
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="7_vpudw"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_w3ugv"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="9_yohdq"]
 
 [node name="ThirdLevel" type="Node2D"]
 script = ExtResource("1_x52e1")
@@ -16,12 +17,11 @@ script = ExtResource("1_x52e1")
 y_sort_enabled = true
 
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("2_tj5bp")]
-z_index = 3
 position = Vector2(60, 89)
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("7_vpudw")]
 y_sort_enabled = true
-position = Vector2(149, 90)
+position = Vector2(217, 91)
 
 [node name="SkeletonPermPressurePlate" parent="YSortOrigin" instance=ExtResource("3_l75yh")]
 z_index = -4
@@ -36,6 +36,9 @@ position = Vector2(224, 80)
 [node name="Skeleton" parent="YSortOrigin" instance=ExtResource("7_w3ugv")]
 y_sort_enabled = true
 position = Vector2(61, 104)
+
+[node name="AttackIndicatior" parent="YSortOrigin/Skeleton/CanvasLayer" index="0"]
+position = Vector2(293, 61)
 
 [node name="Wall" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAAHAAEAAAABAAAAAAAIAAEAAAABAAAAAAAJAAEAAAABAAAAAAAKAAEAAAABAAAAAAALAAEAAAABAAAAAAAMAAEAAAABAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAABAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAIAAAABAAAAAAANAAgAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAABAAAAAAAEAAIAAAABAAAAAAA=")
@@ -52,3 +55,25 @@ collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(32, 16, 255, 16, 255, 31, 252, 30, 81, 31, 83, 52, 68, 52, 68, 67, 50, 67, 50, 110, 66, 110, 66, 124, 82, 125, 82, 141, 206, 142, 206, 125, 222, 126, 222, 109, 238, 109, 239, 66, 221, 67, 221, 51, 205, 50, 206, 35, 254, 38, 255, 159, 35, 159)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Skip" type="Label" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 107.0
+offset_right = 299.0
+offset_bottom = 130.0
+text = "Q - Skip the 
+Level"
+label_settings = ExtResource("9_yohdq")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 75.0
+offset_right = 304.0
+offset_bottom = 98.0
+text = "Possess
+to attack"
+label_settings = ExtResource("9_yohdq")
+
+[editable path="YSortOrigin/Skeleton"]

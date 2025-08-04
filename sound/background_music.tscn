@@ -5,3 +5,4 @@
 [node name="BackgroundMusic" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_xucmb")
 autoplay = true
+bus = &"music"
