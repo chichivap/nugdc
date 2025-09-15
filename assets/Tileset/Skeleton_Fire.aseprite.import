@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dwpt6xohjpkk6"
+path="res://.godot/imported/Skeleton_Fire.aseprite-bef2c8838bf94ce47923cc7f4cb44a0a.res"
+
+[deps]
+
+source_file="res://assets/Tileset/Skeleton_Fire.aseprite"
+dest_files=["res://.godot/imported/Skeleton_Fire.aseprite-bef2c8838bf94ce47923cc7f4cb44a0a.res"]
+
+[params]
+

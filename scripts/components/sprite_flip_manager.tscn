@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bhf6wo68pjml8" path="res://scripts/components/sprite_flip_manager.gd" id="1_s7r4h"]
 
-[node name="SpriteFlipManager" type="Node"]
+[node name="SpriteFlipComponent" type="Node"]
 script = ExtResource("1_s7r4h")

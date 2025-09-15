@@ -51,29 +51,29 @@ polygon = PackedVector2Array(32, 19, 256, 19, 255, 33, 255, 42, 225, 34, 224, 80
 
 [node name="PossessSkillDesc" type="Label" parent="CanvasLayer"]
 offset_left = 259.0
-offset_top = 63.0
+offset_top = 17.0
 offset_right = 314.0
-offset_bottom = 73.0
+offset_bottom = 27.0
 text = "Possess - 1"
 label_settings = ExtResource("8_5wser")
 
 [node name="ResSkillDesc" type="Label" parent="CanvasLayer"]
 offset_left = 259.0
-offset_top = 86.0
+offset_top = 40.0
 offset_right = 319.0
-offset_bottom = 109.0
+offset_bottom = 63.0
 text = "Resurrect
 Skeleton - 2"
 label_settings = ExtResource("8_5wser")
 
 [node name="Restart" type="Label" parent="CanvasLayer"]
 offset_left = 259.0
-offset_top = 122.0
+offset_top = 76.0
 offset_right = 314.0
-offset_bottom = 145.0
+offset_bottom = 99.0
 text = "Restart - R"
 label_settings = ExtResource("8_5wser")
 
 [editable path="YSortOrigin/Necromancer"]
-[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton2"]

@@ -1,4 +1,4 @@
-class_name PosessSkill
+class_name PossessSkill
 extends Skill
 
 var skeleton: PackedScene = preload("uid://bqvghd16833cq")
@@ -16,13 +16,13 @@ func cast_spell(target) -> void:
 	if !target.can_possess:
 		return
 	
+	if target.state_machine.current_state == "state_normal":
+		target.state_machine.change_state(target.state_possessed)
+		target.mana_component.cast(mana_cost)
+
+		super.cast_spell(target)
 	else:
-		if target.state_machine.current_state == "state_normal":
-			target.state_machine.change_state(target.state_posessed)
-			target.mana_component.cast(mana_cost)
-			super.cast_spell(target)
-		else:
-			target.state_machine.change_state(target.state_normal)
-			target.mana_component.cast(mana_cost)
-			super.cast_spell(target)
+		target.state_machine.change_state(target.state_normal)
+		target.mana_component.cast(mana_cost)
+		super.cast_spell(target)
 	

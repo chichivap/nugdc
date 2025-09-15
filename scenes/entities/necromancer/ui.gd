@@ -10,5 +10,5 @@ func _ready() -> void:
 	for i in get_child_count():
 		slots[i].change_key = str(i+1)
 
-	slots[0].skill = PosessSkill.new(slots[0])
+	slots[0].skill = PossessSkill.new(slots[0])
 	slots[1].skill = ResurrectSkill.new(slots[1])

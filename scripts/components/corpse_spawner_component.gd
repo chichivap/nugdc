@@ -8,10 +8,9 @@ const CORPSE_SCENE: PackedScene = preload("uid://cvr06bsxotsvl")
 func _ready() -> void:
 	health_component.died.connect(_on_died)
 
-
 func _on_died() -> void:
-	spawn_corpse()
-	print("Corpse spawned at position: ", owner.global_position)
+	call_deferred("spawn_corpse")
+	
 
 func spawn_corpse() -> void:
 	var corpse = CORPSE_SCENE.instantiate()

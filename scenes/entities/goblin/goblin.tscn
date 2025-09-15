@@ -1,16 +1,31 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1k3jmunabfsd"]
+[gd_scene load_steps=12 format=3 uid="uid://b1k3jmunabfsd"]
 
 [ext_resource type="Script" uid="uid://ctgowyoxpi0sg" path="res://scenes/entities/goblin/goblin.gd" id="1_afvh2"]
 [ext_resource type="Texture2D" uid="uid://dc52hlld5wwsq" path="res://assets/Goblin/Goblin.png" id="2_5xj7o"]
 [ext_resource type="Texture2D" uid="uid://bvltoru1ax7x3" path="res://assets/Goblin/ShadowGoblin.png" id="2_sgqs0"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="4_u53eg"]
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="5_alksd"]
-[ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="6_5xj7o"]
 [ext_resource type="AudioStream" uid="uid://dslr1cdw1tey1" path="res://sound/effects/hurt.wav" id="7_fmnxl"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="8_30f1r"]
+[ext_resource type="PackedScene" uid="uid://cx0136vf648gv" path="res://ui/health_stats.tscn" id="9_30f1r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6wmr"]
 radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmnxl"]
+atlas = ExtResource("2_5xj7o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30f1r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmnxl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
 z_index = 3
@@ -19,22 +34,8 @@ collision_mask = 143
 motion_mode = 1
 script = ExtResource("1_afvh2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-8, -13)
-texture = ExtResource("2_5xj7o")
-centered = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r6wmr")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(4.76837e-07, 7)
-scale = Vector2(0.961538, 1)
-texture = ExtResource("2_sgqs0")
-
-[node name="SpriteFlipManager" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("4_u53eg")]
-actor = NodePath("..")
 
 [node name="TargetAcquisitionTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -42,21 +43,35 @@ one_shot = true
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(4.76837e-07, 7)
+scale = Vector2(0.961538, 1)
+texture = ExtResource("2_sgqs0")
 
-[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_5xj7o")]
-offset_left = -7.0
-offset_top = -18.0
-offset_right = 33.0
-offset_bottom = 22.0
-health_component = NodePath("../HealthComponent")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_30f1r")
+
+[node name="SpriteFlipComponent" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d") instance=ExtResource("4_u53eg")]
+actor = NodePath("..")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
+max_health = 2.0
 
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fmnxl")
 bus = &"sfx"
 script = ExtResource("8_30f1r")
 metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
+
+[node name="HealthStats" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_30f1r")]
+offset_left = -7.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 5.0
+health_component = NodePath("../HealthComponent")

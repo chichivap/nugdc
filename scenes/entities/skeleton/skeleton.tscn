@@ -1,21 +1,35 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=17 format=3 uid="uid://bqvghd16833cq"]
 
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
 [ext_resource type="Texture2D" uid="uid://8jc3uxxajxvv" path="res://assets/Skeleton/Skeleton.png" id="2_rb0rj"]
 [ext_resource type="Texture2D" uid="uid://dgfcqhmlg62ig" path="res://assets/ShadowSkeleton.png" id="3_thk0v"]
 [ext_resource type="Texture2D" uid="uid://tsbvasur62ga" path="res://assets/Skeleton/SkeletonMarker.png" id="4_6gwcx"]
-[ext_resource type="Texture2D" uid="uid://ct5k48s0sthx2" path="res://assets/Skeleton Marker.png" id="4_tem1c"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="5_kvfbh"]
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="6_yvqff"]
-[ext_resource type="PackedScene" uid="uid://ho4vdpm625eb" path="res://ui/health_bar_component.tscn" id="7_rb0rj"]
-[ext_resource type="Texture2D" uid="uid://bae5vk4bf6ry3" path="res://assets/Skeleton/BonePile.png" id="8_d4gqi"]
+[ext_resource type="PackedScene" uid="uid://5djgopggjinb" path="res://scripts/components/follow_component.tscn" id="8_brsed"]
 [ext_resource type="Script" uid="uid://defq4lced13jk" path="res://scripts/components/corpse_spawner_component.gd" id="9_n7mv8"]
 [ext_resource type="AudioStream" uid="uid://dslr1cdw1tey1" path="res://sound/effects/hurt.wav" id="10_brsed"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="11_6gwcx"]
-[ext_resource type="Texture2D" uid="uid://c1dgxtmx56fxa" path="res://assets/Icons/Attack.png" id="13_pn5cg"]
+[ext_resource type="PackedScene" uid="uid://cx0136vf648gv" path="res://ui/health_stats.tscn" id="12_6gwcx"]
+[ext_resource type="Script" uid="uid://bpcgb1bxjoqhq" path="res://scripts/components/flash_component.gd" id="13_pn5cg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
 radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn5cg"]
+atlas = ExtResource("2_rb0rj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3msf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn5cg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4gqi"]
 radius = 6.0
@@ -26,11 +40,6 @@ collision_layer = 2
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_u58mj")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-9, -13)
-texture = ExtResource("2_rb0rj")
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -46,6 +55,10 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 1.4
+one_shot = true
+
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-6, 1)
@@ -57,22 +70,30 @@ z_index = -2
 position = Vector2(0, 3)
 texture = ExtResource("4_6gwcx")
 
-[node name="SpriteFlipManager" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("5_kvfbh")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -5)
+sprite_frames = SubResource("SpriteFrames_d3msf")
+
+[node name="SpriteFlipComponent" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d") instance=ExtResource("5_kvfbh")]
 actor = NodePath("..")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_yvqff")]
+max_health = 5.0
 
-[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_rb0rj")]
-offset_left = -6.0
-offset_top = -17.0
-offset_right = 34.0
-offset_bottom = 23.0
+[node name="CorpseSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_n7mv8")
 health_component = NodePath("../HealthComponent")
 
-[node name="BonePile" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -5)
-texture = ExtResource("8_d4gqi")
+[node name="FollowComponent" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("8_brsed")]
+actor = NodePath("..")
+
+[node name="HealthStats" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_6gwcx")]
+offset_left = -8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 8.0
+health_component = NodePath("../HealthComponent")
 
 [node name="ResurrectionArea" type="Area2D" parent="."]
 collision_layer = 16
@@ -82,25 +103,13 @@ collision_mask = 0
 visible = false
 shape = SubResource("CircleShape2D_d4gqi")
 
-[node name="CorpseSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
-script = ExtResource("9_n7mv8")
-health_component = NodePath("../HealthComponent")
-
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_brsed")
 bus = &"sfx"
 script = ExtResource("11_6gwcx")
 metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
 
-[node name="PossessMarker" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0, 0.768093, 0.71723, 1)
-position = Vector2(-7, 0)
-texture = ExtResource("4_tem1c")
-centered = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AttackIndicatior" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(293, 69)
-texture = ExtResource("13_pn5cg")
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("13_pn5cg")
+sprite = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://bpcgb1bxjoqhq"

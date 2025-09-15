@@ -31,7 +31,7 @@ position = Vector2(33, 90)
 
 [node name="Trapdoor" parent="YSortOrigin" instance=ExtResource("3_tx0nv")]
 unique_name_in_owner = true
-position = Vector2(20, 24)
+position = Vector2(36, 24)
 
 [node name="Goblin" parent="YSortOrigin" instance=ExtResource("4_tx0nv")]
 position = Vector2(155, 35)
@@ -62,5 +62,5 @@ collision_mask = 7
 polygon = PackedVector2Array(32, 16, 256, 16, 256, 32, 209, 32, 209, 81, 177, 81, 178, 114, 144, 114, 144, 95, 158, 95, 159, 63, 192, 63, 192, 29, 96, 30, 96, 47, 128, 47, 128, 113, 111, 114, 111, 65, 79, 65, 79, 32, 47, 32, 48, 146, 240, 144, 240, 35, 256, 36, 256, 160, 31, 159)
 
 [editable path="YSortOrigin/Necromancer"]
-[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton2"]

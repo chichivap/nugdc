@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ct8hkojqk2nc1"
+path="res://.godot/imported/PermPressurePlate.aseprite-d596ead5f57688e7f1e25a5e51ad07c6.res"
+
+[deps]
+
+source_file="res://assets/Tileset/Trapdoors/PermPressurePlate.aseprite"
+dest_files=["res://.godot/imported/PermPressurePlate.aseprite-d596ead5f57688e7f1e25a5e51ad07c6.res"]
+
+[params]
+

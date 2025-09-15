@@ -11,6 +11,9 @@ static func get_direction() -> Vector2:
 		ACTION_MOVE_UP, ACTION_MOVE_DOWN
 	)
 
+
+
+
 static func flip_the_sprite(sprite_2d: Sprite2D, velocity: Vector2, last_faced_direction) -> void:
 	sprite_2d.flip_h = last_faced_direction.x < 0
 	if velocity.x != 0:

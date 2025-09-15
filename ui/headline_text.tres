@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dlcqen2rpuc33"]
+
+[ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="1_o6xv4"]
+
+[resource]
+font = ExtResource("1_o6xv4")
+font_size = 20

@@ -14,8 +14,8 @@ var change_key = "":
 
 		shortcut = Shortcut.new()
 		var input_key = InputEventKey.new()
-		input_key.keycode = value.unicode_at(0)
-
+		#input_key.keycode = value.unicode_at(0)
+		input_key.key_label = value.unicode_at(0)
 		shortcut.events = [input_key]
 
 func _ready() -> void:

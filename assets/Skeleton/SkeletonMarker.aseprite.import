@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bekd02m7jkuvo"
+path="res://.godot/imported/SkeletonMarker.aseprite-d9d240a173f8ea14b92c98f240f4435c.res"
+
+[deps]
+
+source_file="res://assets/Skeleton/SkeletonMarker.aseprite"
+dest_files=["res://.godot/imported/SkeletonMarker.aseprite-d9d240a173f8ea14b92c98f240f4435c.res"]
+
+[params]
+

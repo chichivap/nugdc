@@ -40,5 +40,5 @@ collision_mask = 7
 polygon = PackedVector2Array(32, 32, 32, 160, 256, 160, 256, 35, 236, 37, 237, 142, 161, 143, 162, 112, 142, 112, 141, 142, 100, 142, 99, 112, 77, 112, 77, 143, 51, 140, 51, 35, 77, 35, 77, 64, 98, 64, 98, 36, 143, 36, 144, 33, 144, 65, 161, 66, 161, 34, 240, 34, 239, 31)
 
 [editable path="YSortOrigin/Necromancer"]
-[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton"]
+[editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton2"]

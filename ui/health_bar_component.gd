@@ -10,8 +10,8 @@ func _ready() -> void:
 	update_progress()
 
 func update_progress() -> void:
-	var percentage = health_component.current_health / (1.0 if health_component.max_health == 0 else health_component.max_health)
+	var percentage = health_component.current_health / health_component.max_health
 	progress_bar.value = percentage
-	progress_bar.visible = percentage < 1.0
+	progress_bar.visible = percentage <= 1.0
 func _on_health_changed(_value: int) -> void:
 	update_progress()

@@ -33,6 +33,7 @@ func completed_level():
 	if next_scene:
 		transition.transition_to(next_scene)
 
+
 	#match current_level:
 	#	1:
 	#		get_tree().change_scene_to_packed.call_deferred(first_level)
@@ -52,19 +53,30 @@ func completed_level():
 func restart_level(value):
 	match value:
 		1:
+			await transition.transition_to(first_level)
 			get_tree().change_scene_to_packed.call_deferred(first_level)
+		
 		2:
+			await transition.transition_to(second_level)
 			get_tree().change_scene_to_packed.call_deferred(second_level)
+	
 		3:
+			await transition.transition_to(third_level)
 			get_tree().change_scene_to_packed.call_deferred(third_level)
+
 		4:
+			await transition.transition_to(fourth_level)
 			get_tree().change_scene_to_packed.call_deferred(fourth_level)
 		5:
+			await transition.transition_to(fifth_level)
 			get_tree().change_scene_to_packed.call_deferred(fifth_level)
 		6:
+			await transition.transition_to(sixth_level)
 			get_tree().change_scene_to_packed.call_deferred(sixth_level)
 		7:
+			await transition.transition_to(seventh_level)
 			get_tree().change_scene_to_packed.call_deferred(seventh_level)
+
 		8:
 			get_tree().change_scene_to_packed.call_deferred(game_end)
 
