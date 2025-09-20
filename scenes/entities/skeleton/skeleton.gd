@@ -128,7 +128,7 @@ func acquire_target() -> void:
 
 func _on_target_acquisition_timeout() -> void:
 	acquire_target()
-	target_acquisition_timer.start(randf_range(0.2, 0.6))	
+	target_acquisition_timer.start()	
 
 func _on_died() -> void:
 	queue_free()

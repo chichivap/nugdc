@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=23 format=4 uid="uid://bqvghd16833cq"]
 
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
-[ext_resource type="Texture2D" uid="uid://8jc3uxxajxvv" path="res://assets/Skeleton/Skeleton.png" id="2_rb0rj"]
 [ext_resource type="Texture2D" uid="uid://dgfcqhmlg62ig" path="res://assets/ShadowSkeleton.png" id="3_thk0v"]
 [ext_resource type="Texture2D" uid="uid://tsbvasur62ga" path="res://assets/Skeleton/SkeletonMarker.png" id="4_6gwcx"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="5_kvfbh"]
@@ -11,24 +10,75 @@
 [ext_resource type="AudioStream" uid="uid://dslr1cdw1tey1" path="res://sound/effects/hurt.wav" id="10_brsed"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="11_6gwcx"]
 [ext_resource type="PackedScene" uid="uid://cx0136vf648gv" path="res://ui/health_stats.tscn" id="12_6gwcx"]
+[ext_resource type="Script" uid="uid://tjlld5ue487i" path="res://scripts/components/animation_component.gd" id="12_pn5cg"]
 [ext_resource type="Script" uid="uid://bpcgb1bxjoqhq" path="res://scripts/components/flash_component.gd" id="13_pn5cg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u58mj"]
 radius = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pn5cg"]
-atlas = ExtResource("2_rb0rj")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_brsed"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAAD8AAAAUklGRvQAAABXRUJQVlA4TOgAAAAvX8APECcgECDsuzHiT0HbNkwPqDP4QyYQSHEMWz3/AeD9kjED7EaSLCmlWg/WglL1GtBi/LcOaZoa3vAT0X9Fbts2zrWDSX6B31qVD6fLnN2Zo++bozt1+OHoDh3I3X7yOTF0SDh7ZNmcHeHaJY6O0C0asyNyL5h97WFm5q6Gmlv3q+PaO+ysj4LZTBxoCPjYDooHHP8LVT6cLnN2Z46+b47u1OGHozt0IHf7yef0hj7iPZ3emxQ6ls2zjpLOOpbovvYOe01rH1zVdnPvgGqfF6iHRk3gqKOhd3bgmgMOoTikNLpg/EwL")
+size_override = Vector2(96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d3msf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gwcx"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn5cg"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3msf"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txdlc"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ddt"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ay4l"]
+atlas = SubResource("PortableCompressedTexture2D_brsed")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6vva"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6gwcx")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pn5cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3msf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txdlc")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gwcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ddt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gwcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ay4l")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4gqi"]
@@ -46,7 +96,7 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_u58mj")
 
 [node name="TargetAcquisitionTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 11.0
 one_shot = true
 autostart = true
 
@@ -56,7 +106,7 @@ one_shot = true
 autostart = true
 
 [node name="InvincibleTimer" type="Timer" parent="."]
-wait_time = 1.4
+wait_time = 0.5
 one_shot = true
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -71,8 +121,32 @@ position = Vector2(0, 3)
 texture = ExtResource("4_6gwcx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-1, -5)
-sprite_frames = SubResource("SpriteFrames_d3msf")
+sprite_frames = SubResource("SpriteFrames_u6vva")
+animation = &"Idle"
+frame_progress = 0.600007
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": ["Skeleton"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/Animations/Skeleton/skeleton-animation.aseprite",
+"source_uid": 1090167890373730794
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3df3e1a64ba971a67f7b1f20dc3464bc"
 
 [node name="SpriteFlipComponent" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d") instance=ExtResource("5_kvfbh")]
 actor = NodePath("..")
@@ -113,3 +187,9 @@ metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
 script = ExtResource("13_pn5cg")
 sprite = NodePath("../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://bpcgb1bxjoqhq"
+
+[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d")]
+script = ExtResource("12_pn5cg")
+actor = NodePath("..")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://tjlld5ue487i"

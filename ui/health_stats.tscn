@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx0136vf648gv"]
 
 [ext_resource type="Script" uid="uid://ujlr7jnxp0lx" path="res://ui/health_stats.gd" id="1_wg1qt"]
-[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="2_pppik"]
+[ext_resource type="LabelSettings" uid="uid://3e4g4h5vniu2" path="res://ui/stats_tetxt.tres" id="2_op2ch"]
 [ext_resource type="Texture2D" uid="uid://bf3bdmn2ds0cp" path="res://assets/UI/health_icon.png" id="3_op2ch"]
 
 [node name="HealthStats" type="Control"]
@@ -11,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wg1qt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -21,18 +20,16 @@ offset_bottom = 40.0
 
 [node name="Health" type="Label" parent="."]
 layout_mode = 2
-offset_left = 22.0
-offset_top = 3.0
-offset_right = 29.985
-offset_bottom = 13.0
-scale = Vector2(1.5, 1.5)
+offset_left = 8.0
+offset_right = 14.0
+offset_bottom = 14.0
 text = "1"
-label_settings = ExtResource("2_pppik")
+label_settings = ExtResource("2_op2ch")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -11.0
-offset_top = -11.0
-offset_right = 29.0
-offset_bottom = 29.0
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 11.0
+offset_bottom = 12.0
 texture = ExtResource("3_op2ch")

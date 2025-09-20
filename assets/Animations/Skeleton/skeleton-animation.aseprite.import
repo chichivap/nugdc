@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://psc52gwvoobq"
+path="res://.godot/imported/skeleton-animation.aseprite-f68abaabcfb0b2d5736a1f22656da6c8.res"
+
+[deps]
+
+source_file="res://assets/Animations/Skeleton/skeleton-animation.aseprite"
+dest_files=["res://.godot/imported/skeleton-animation.aseprite-f68abaabcfb0b2d5736a1f22656da6c8.res"]
+
+[params]
+

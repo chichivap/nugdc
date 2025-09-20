@@ -1,0 +1,258 @@
+[gd_scene load_steps=14 format=3 uid="uid://cnuesfgv4etu1"]
+
+[ext_resource type="Script" uid="uid://bpmsof4105ken" path="res://ui/settings_menu/settings_menu.gd" id="1_2adas"]
+[ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="1_kvsec"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="4_424ss"]
+[ext_resource type="Theme" uid="uid://bl7wyroslcovc" path="res://ui/settings_menu.tres" id="5_p8urx"]
+[ext_resource type="Texture2D" uid="uid://sw7mbusc70tm" path="res://assets/UI/plus.png" id="6_gjkyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_424ss"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjkyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8urx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5th28"]
+bg_color = Color(0, 0.766743, 0.870854, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 9
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4si7q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hjxc"]
+bg_color = Color(0.0588235, 0.529412, 0.843137, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxbwa"]
+bg_color = Color(0.286275, 0.894118, 1, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="Theme" id="Theme_p8urx"]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0.211765, 0.0235294, 0.356863, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
+MainMenuButton/font_sizes/font_size = 10
+MainMenuButton/fonts/font = ExtResource("1_kvsec")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_4si7q")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_8hjxc")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+SettingsButton/base_type = &"Button"
+
+[node name="SettingsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2adas")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -91.0
+offset_right = 161.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 236.0
+offset_bottom = 98.0
+
+[node name="LabelsContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MusicVolume" type="Label" parent="HBoxContainer/LabelsContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = ExtResource("4_424ss")
+
+[node name="SFXVolume" type="Label" parent="HBoxContainer/LabelsContainer"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = ExtResource("4_424ss")
+
+[node name="CRT Shader" type="Label" parent="HBoxContainer/LabelsContainer"]
+layout_mode = 2
+text = "CRT Shader"
+label_settings = ExtResource("4_424ss")
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 27
+theme_override_styles/separator = SubResource("StyleBoxEmpty_424ss")
+
+[node name="DownButtonsContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DownButtonsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_bottom = 0
+
+[node name="MusicDown" type="Button" parent="HBoxContainer/DownButtonsContainer/MarginContainer"]
+custom_minimum_size = Vector2(20.965, -55)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_p8urx")
+theme_type_variation = &"SettingsButton"
+text = "-"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/DownButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gjkyi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/DownButtonsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+
+[node name="SFXDown" type="Button" parent="HBoxContainer/DownButtonsContainer/MarginContainer2"]
+custom_minimum_size = Vector2(20.965, 3.365)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_p8urx")
+theme_type_variation = &"SettingsButton"
+theme_override_constants/line_spacing = 0
+text = "-"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/DownButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gjkyi")
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/DownButtonsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+
+[node name="CRTButton" type="Button" parent="HBoxContainer/DownButtonsContainer/MarginContainer3"]
+custom_minimum_size = Vector2(20.965, 3.365)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_p8urx")
+theme_type_variation = &"SettingsButton"
+theme_override_constants/line_spacing = 0
+toggle_mode = true
+text = "CRT"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p8urx")
+
+[node name="ValueContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="MusicVolume" type="Label" parent="HBoxContainer/ValueContainer"]
+layout_mode = 2
+text = "10"
+label_settings = ExtResource("4_424ss")
+
+[node name="SfxVolume" type="Label" parent="HBoxContainer/ValueContainer"]
+layout_mode = 2
+text = "10"
+label_settings = ExtResource("4_424ss")
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_p8urx")
+
+[node name="UpButtonsContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/UpButtonsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+
+[node name="MusicUp" type="Button" parent="HBoxContainer/UpButtonsContainer/MarginContainer"]
+custom_minimum_size = Vector2(20.965, 3.365)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_p8urx")
+theme_type_variation = &"SettingsButton"
+icon = ExtResource("6_gjkyi")
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/UpButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gjkyi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/UpButtonsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+
+[node name="SFXUp" type="Button" parent="HBoxContainer/UpButtonsContainer/MarginContainer2"]
+custom_minimum_size = Vector2(20.965, 3.365)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_p8urx")
+theme_type_variation = &"SettingsButton"
+theme_override_constants/line_spacing = 0
+icon = ExtResource("6_gjkyi")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_p8urx")
+theme_type_variation = &"MainMenuButton"
+text = "Return"
+
+[connection signal="pressed" from="HBoxContainer/DownButtonsContainer/MarginContainer/MusicDown" to="." method="_on_music_down_pressed"]
+[connection signal="pressed" from="HBoxContainer/DownButtonsContainer/MarginContainer2/SFXDown" to="." method="_on_sfx_down_pressed"]
+[connection signal="toggled" from="HBoxContainer/DownButtonsContainer/MarginContainer3/CRTButton" to="." method="_on_crt_button_toggled"]
+[connection signal="pressed" from="HBoxContainer/UpButtonsContainer/MarginContainer/MusicUp" to="." method="_on_music_up_pressed"]
+[connection signal="pressed" from="HBoxContainer/UpButtonsContainer/MarginContainer2/SFXUp" to="." method="_on_sfx_up_pressed"]

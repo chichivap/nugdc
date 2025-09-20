@@ -1,30 +1,80 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1k3jmunabfsd"]
+[gd_scene load_steps=18 format=4 uid="uid://b1k3jmunabfsd"]
 
 [ext_resource type="Script" uid="uid://ctgowyoxpi0sg" path="res://scenes/entities/goblin/goblin.gd" id="1_afvh2"]
-[ext_resource type="Texture2D" uid="uid://dc52hlld5wwsq" path="res://assets/Goblin/Goblin.png" id="2_5xj7o"]
 [ext_resource type="Texture2D" uid="uid://bvltoru1ax7x3" path="res://assets/Goblin/ShadowGoblin.png" id="2_sgqs0"]
 [ext_resource type="PackedScene" uid="uid://hc2acicrbtsv" path="res://scripts/components/sprite_flip_manager.tscn" id="4_u53eg"]
 [ext_resource type="PackedScene" uid="uid://d01xdcorerq6l" path="res://scripts/components/health_component.tscn" id="5_alksd"]
 [ext_resource type="AudioStream" uid="uid://dslr1cdw1tey1" path="res://sound/effects/hurt.wav" id="7_fmnxl"]
 [ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="8_30f1r"]
+[ext_resource type="Script" uid="uid://tjlld5ue487i" path="res://scripts/components/animation_component.gd" id="8_fmnxl"]
 [ext_resource type="PackedScene" uid="uid://cx0136vf648gv" path="res://ui/health_stats.tscn" id="9_30f1r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6wmr"]
 radius = 3.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmnxl"]
-atlas = ExtResource("2_5xj7o")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_1dap4"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAAA2AQAAUklGRi4BAABXRUJQVlA4TCEBAAAvX8APEDdAEAiSx/jzbDSIggBkGGnoIP7ZcpEFg4whj/zfMMKZ/wBAYY6zoukfIDWSJEmKSZUawQBIhZrBEAhNJ4DBcPJHUdFZrz0+Ef1n4EhSogHOpZBX4LdWqtZGVTW8u+XQ4aLqOnC71qXnPmx0yu0dfpy82zssDNa9Yt4+xu0dds94fL2j1Y+deG7e0XBrkCK8o+EWMjJgHT33ENBxCPs9A3O4BpY6MjIWO5hc4PhfKFVro6oa3t1y6HBRdR24XevScx82OuX2Dj9O3u0dFgbrXj1vqhMOfGw+cxbjsVnHt+PATnw253h2HBpkztkgRUxd1oGMPeZPZmTMXft97gAkYpox5IZ9yK5b59BAzZPh9qBzZIAmTLrQusDAj7QAAA==")
+size_override = Vector2(96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_30f1r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmnxl"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30f1r"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1on3"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lxd5"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68g61"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knw5w"]
+atlas = SubResource("PortableCompressedTexture2D_1dap4")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6r42p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fmnxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30f1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1on3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lxd5")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmnxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68g61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmnxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knw5w")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
 }]
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
@@ -53,8 +103,31 @@ scale = Vector2(0.961538, 1)
 texture = ExtResource("2_sgqs0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -5)
-sprite_frames = SubResource("SpriteFrames_30f1r")
+sprite_frames = SubResource("SpriteFrames_6r42p")
+animation = &"Idle"
+frame_progress = 0.568059
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": ["Goblin"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/Animations/Goblin/goblin-animation.aseprite",
+"source_uid": 7411796647427510657
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c6dd74c5f4f8901b20a9a47bbc5ff39f"
 
 [node name="SpriteFlipComponent" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d") instance=ExtResource("4_u53eg")]
 actor = NodePath("..")
@@ -62,6 +135,12 @@ animated_sprite_2d = NodePath("../AnimatedSprite2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_alksd")]
 max_health = 2.0
+
+[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "animated_sprite_2d")]
+script = ExtResource("8_fmnxl")
+actor = NodePath("..")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://tjlld5ue487i"
 
 [node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fmnxl")

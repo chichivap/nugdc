@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ddulhclsnj64t"
+path="res://.godot/imported/goblin-animation.aseprite-6318b1f3ff4580ead761277979faf86a.res"
+
+[deps]
+
+source_file="res://assets/Animations/Goblin/goblin-animation.aseprite"
+dest_files=["res://.godot/imported/goblin-animation.aseprite-6318b1f3ff4580ead761277979faf86a.res"]
+
+[params]
+

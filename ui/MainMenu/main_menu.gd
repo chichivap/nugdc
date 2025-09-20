@@ -6,16 +6,9 @@ const TRANSITION_SCENE: PackedScene = preload("uid://bbwobgmcbrmmi")
 var transition: PixelTransition
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PostProcessing.set_shader_param('scanline_strength', 0.16)
-	PostProcessing.set_shader_param('vigniette_strength', 1)
-	PostProcessing.set_shader_param('noise_strength', 0.047)
-	PostProcessing.set_shader_param('glow_strength', 0.3)
-	PostProcessing.set_shader_param('glow_radius', 1.0)
-
+	GameManager.toggle_crt(true)
 	transition = TRANSITION_SCENE.instantiate()
 	add_child(transition)
-
-	AudioServer.set_bus_volume_db(0, -20)
 
 	button.disabled = false
 

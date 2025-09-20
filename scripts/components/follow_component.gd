@@ -48,7 +48,7 @@ func _on_target_acquisition_timer_timeout() -> void:
 			stop_follow()
 		_:
 			push_error("FollowComponent: Unknown target type '%s'" % target_type)
-	target_acquisition_timer.start(randf_range(0.3, 0.5))	
+	target_acquisition_timer.start(0.7)	
 
 func acquire_skeleton_target() -> void:
 	if is_instance_valid(get_skeleton()):

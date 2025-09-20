@@ -1,0 +1,209 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbwtp30lxg02l"]
+
+[ext_resource type="Script" uid="uid://ddmxe8n8bkpt2" path="res://ui/PauseMenu/pause_menu.gd" id="1_5h0g6"]
+[ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="1_7q1jm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4si7q"]
+bg_color = Color(0, 0.766743, 0.870854, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 9
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hjxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5th28"]
+bg_color = Color(0.0588235, 0.529412, 0.843137, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxbwa"]
+bg_color = Color(0.286275, 0.894118, 1, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="Theme" id="Theme_5h0g6"]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0.211765, 0.0235294, 0.356863, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
+MainMenuButton/font_sizes/font_size = 10
+MainMenuButton/fonts/font = ExtResource("1_7q1jm")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hjxc")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+SettingsButton/base_type = &"Button"
+
+[sub_resource type="Theme" id="Theme_2rdom"]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0.211765, 0.0235294, 0.356863, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
+MainMenuButton/font_sizes/font_size = 10
+MainMenuButton/fonts/font = ExtResource("1_7q1jm")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hjxc")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+SettingsButton/base_type = &"Button"
+
+[sub_resource type="Theme" id="Theme_xelkg"]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0.211765, 0.0235294, 0.356863, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
+MainMenuButton/font_sizes/font_size = 10
+MainMenuButton/fonts/font = ExtResource("1_7q1jm")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hjxc")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+SettingsButton/base_type = &"Button"
+
+[sub_resource type="Theme" id="Theme_7q1jm"]
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0.211765, 0.0235294, 0.356863, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
+MainMenuButton/font_sizes/font_size = 10
+MainMenuButton/fonts/font = ExtResource("1_7q1jm")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hjxc")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_5th28")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_4si7q")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+SettingsButton/base_type = &"Button"
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5h0g6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 130.0
+offset_top = 24.0
+offset_right = 190.0
+offset_bottom = 156.0
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_5h0g6")
+theme_type_variation = &"MainMenuButton"
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_2rdom")
+theme_type_variation = &"MainMenuButton"
+text = "Settings
+"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_xelkg")
+theme_type_variation = &"MainMenuButton"
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7q1jm")
+theme_type_variation = &"MainMenuButton"
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
