@@ -4,6 +4,9 @@ extends Control
 
 signal settings_pressed()
 
+func _ready() -> void:
+	visible = false
+
 func resume() -> void:
 	get_tree().paused = false
 	visible = false

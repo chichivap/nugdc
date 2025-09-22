@@ -6,7 +6,7 @@ extends Node
 # But you could also export a material instead to allow the component to use a variety
 # of different materials	
 const FLASH_MATERIAL = preload("res://effects/white_flash_material.tres")
-
+	
 # Export the sprite this compononet will be flashing
 @export var sprite: CanvasItem
 

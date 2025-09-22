@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy30hjf5y66if"]
+
+[ext_resource type="Script" uid="uid://cde125y6v2e4a" path="res://scripts/components/flashing_loop_component.gd" id="1_yycky"]
+
+[node name="FlashingLoopComponent" type="Node"]
+script = ExtResource("1_yycky")

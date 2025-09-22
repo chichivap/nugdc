@@ -172,6 +172,7 @@ theme = ExtResource("5_p8urx")
 theme_type_variation = &"SettingsButton"
 theme_override_constants/line_spacing = 0
 toggle_mode = true
+button_pressed = true
 text = "CRT"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]

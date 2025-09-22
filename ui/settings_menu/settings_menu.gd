@@ -12,7 +12,7 @@ extends Control
 var music_index = AudioServer.get_bus_index("music")
 var sfx_index = AudioServer.get_bus_index("sfx")
 
-
+@onready var crt_button: Button = $HBoxContainer/DownButtonsContainer/MarginContainer3/CRTButton
 
 signal returned_to_pause_menu()
 
@@ -22,7 +22,6 @@ func _ready() -> void:
 	set_music_volume_db(StoredValues.music_volume_value)
 	set_sfx_volume_db(StoredValues.sfx_volume_value)
 	
-
 func update_music_label(value: int) -> void:
 	music_volume.text = str(value)
 
@@ -42,13 +41,11 @@ func set_sfx_volume_db(value: int) -> void:
 	AudioServer.set_bus_volume_db(sfx_index, db_value)
 	update_sfx_label(StoredValues.sfx_volume_value)
 
-
 func _on_music_down_pressed() -> void:
 	set_music_volume_db(StoredValues.music_volume_value - 1)
 
 func _on_music_up_pressed() -> void:
 	set_music_volume_db(StoredValues.music_volume_value + 1)
-
 
 func _on_sfx_down_pressed() -> void:
 	set_sfx_volume_db(StoredValues.sfx_volume_value - 1)
