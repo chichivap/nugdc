@@ -11,8 +11,9 @@ func _init(target) -> void:
 	mana_cost = 3
 func cast_spell(target) -> void:
 	super.cast_spell(target)
+	if target.state_machine.current_state == "state_possessed":
+		return
 	if !is_instance_valid(corpse):
-		print("NOT ALLOWED")
 		return
 	target.state_machine.change_state(target.state_res)
 	target.mana_component.cast(mana_cost)

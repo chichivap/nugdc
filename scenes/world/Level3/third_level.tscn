@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cj75bp0dc2bld"]
+[gd_scene load_steps=11 format=4 uid="uid://cj75bp0dc2bld"]
 
 [ext_resource type="Script" uid="uid://bagshydqeq54q" path="res://scenes/world/Level3/third_level.gd" id="1_x52e1"]
 [ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="2_3svjo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="7_vpudw"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_w3ugv"]
 [ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="9_yohdq"]
+[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="10_b4qvx"]
 
 [node name="ThirdLevel" type="Node2D"]
 script = ExtResource("1_x52e1")
@@ -72,5 +73,7 @@ offset_bottom = 42.0
 text = "Possess
 to attack"
 label_settings = ExtResource("9_yohdq")
+
+[node name="Menus" parent="." instance=ExtResource("10_b4qvx")]
 
 [editable path="YSortOrigin/Skeleton"]

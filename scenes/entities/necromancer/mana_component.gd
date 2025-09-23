@@ -4,6 +4,7 @@ extends Node
 @export var max_mana: float = 8
 
 signal mana_changed(value)
+signal mana_drained()
 
 var current_mana: float
 
@@ -15,6 +16,8 @@ func cast(amount: int) -> void:
 	mana_changed.emit(current_mana)
 	if current_mana <= 0:
 		current_mana = 0
+		mana_drained.emit()
+
 
 
 

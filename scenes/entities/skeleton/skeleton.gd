@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const PLAYER_GROUP: StringName = "player"
 const ENEMY_GROUP: StringName = "enemy"
-var SPEED: int = 140
+var SPEED: int = 100
 const COMBAT_RANGE: int = 16
 
 const ACTION_MOVE_UP: StringName = "move_up" 
@@ -107,6 +107,7 @@ func state_attack() -> void:
 	if attack_timer.is_stopped():
 		enemy_target.health_component.damage(damage_amount)
 		attack_timer.start(1)
+		variable_pitch_audio_stream_player.play()
 
 
 func _on_necromancer_posessed(value: bool) -> void:

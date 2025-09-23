@@ -10,6 +10,7 @@ const LEVEL_ID = 2
 func _ready():
 	skill_layer.visible = true
 
+
 func _process(_delta: float) -> void:
 	if permanent_pressure_plate.pressed and skeleton_perm_pressure_plate.pressed:
 		trapdoor.open()

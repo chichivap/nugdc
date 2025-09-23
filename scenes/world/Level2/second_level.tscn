@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://npek0mnbykcy"]
+[gd_scene load_steps=11 format=4 uid="uid://npek0mnbykcy"]
 
 [ext_resource type="Script" uid="uid://dgh73nvxjfqyj" path="res://scenes/world/Level2/second_level.gd" id="1_xip67"]
 [ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="2_hmh76"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="6_ok6h6"]
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="7_hd7x4"]
 [ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="8_5wser"]
+[ext_resource type="PackedScene" uid="uid://bvor1w6vl73cn" path="res://scenes/world/Objects/floor_spike.tscn" id="9_sj60w"]
+[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="10_8o8mu"]
 
 [node name="SecondLevel" type="Node2D"]
 script = ExtResource("1_xip67")
@@ -73,6 +75,11 @@ offset_right = 314.0
 offset_bottom = 99.0
 text = "Restart - R"
 label_settings = ExtResource("8_5wser")
+
+[node name="FloorSpike" parent="." instance=ExtResource("9_sj60w")]
+position = Vector2(160, 80)
+
+[node name="Menus" parent="." instance=ExtResource("10_8o8mu")]
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]

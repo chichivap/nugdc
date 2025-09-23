@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bqvghd16833cq"]
+[gd_scene load_steps=27 format=4 uid="uid://bqvghd16833cq"]
 
 [ext_resource type="Script" uid="uid://b73wdx73j1d51" path="res://scenes/entities/skeleton/skeleton.gd" id="1_u58mj"]
 [ext_resource type="Texture2D" uid="uid://dgfcqhmlg62ig" path="res://assets/ShadowSkeleton.png" id="3_thk0v"]
@@ -82,41 +82,8 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="Animation" id="Animation_6gwcx"]
-resource_name = "flash"
-length = 0.25
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_pn5cg"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_d3msf"]
-resource_name = "normal"
-length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,11 +97,27 @@ tracks/0/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_6gwcx"]
+resource_name = "flash"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.11, 0.21),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pn5cg"]
 _data = {
 &"RESET": SubResource("Animation_pn5cg"),
-&"flash": SubResource("Animation_6gwcx"),
-&"normal": SubResource("Animation_d3msf")
+&"flash": SubResource("Animation_6gwcx")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4gqi"]
@@ -176,7 +159,6 @@ position = Vector2(0, 3)
 texture = ExtResource("4_6gwcx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(-1, -5)
 sprite_frames = SubResource("SpriteFrames_u6vva")

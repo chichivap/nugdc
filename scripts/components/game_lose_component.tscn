@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b72abx5wxiqnp"]
+
+[ext_resource type="Script" uid="uid://cc3qnopec64mp" path="res://scripts/components/game_lose_component.gd" id="1_weeuh"]
+[ext_resource type="LabelSettings" uid="uid://dqpouqganhgon" path="res://ui/default_text.tres" id="2_wcdda"]
+
+[node name="GameLoseComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_weeuh")
+
+[node name="LabelTimer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 157.0
+offset_right = 79.0
+offset_bottom = 180.0
+text = "Timer: "
+label_settings = ExtResource("2_wcdda")

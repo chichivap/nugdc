@@ -15,6 +15,7 @@ func cast_spell(target) -> void:
 		return
 	if !target.can_possess:
 		return
+
 	
 	if target.state_machine.current_state == "state_normal":
 		target.state_machine.change_state(target.state_possessed)

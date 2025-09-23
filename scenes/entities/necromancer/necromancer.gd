@@ -1,7 +1,7 @@
 class_name Necromancer
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 85.0
 
 const ACTION_MOVE_UP: StringName = "move_up" 
 const ACTION_MOVE_DOWN: StringName = "move_down"
@@ -18,14 +18,14 @@ const SKELETON_GROUP: StringName = "skeleton"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var follow_component: FollowComponent = $FollowComponent
 @onready var possess_area: Area2D = $PossessArea
+
 var is_resurrecting: bool
 var resurrection_shape_shape: CircleShape2D
 var possession_shape_shape: CircleShape2D
 var last_faced_direction: Vector2
 var state_machine := CallableStateMachine.new()
 
-var res_circle_color_main : Color = Color(0.21, 0.02, 0.36, 0.2)
-var res_circle_color : Color = Color(1, 0, 0, 0.5)
+var res_circle_color : Color = Color(0.21, 0.02, 0.36, 0.2)
 
 var pos_circle_color_main : Color = Color(1,0,1,0.2)
 var pos_circle_color : Color = Color(1,0,1,0.5)
@@ -42,6 +42,8 @@ var corpse: Corpse
 
 var can_possess: bool = false
 
+var is_mana_drained: bool = false 
+
 func _process(_delta: float) -> void:
 	state_machine.update()
 	if should_draw_res_circle:
@@ -54,6 +56,8 @@ func _ready() -> void:
 	state_machine.set_initial_state(state_normal)
 
 	resurrection_area.area_entered.connect(_on_resurrection_area_entered)
+
+	mana_component.mana_drained.connect(_on_mana_drained)
 
 	possession_shape_shape = possession_shape.shape
 	resurrection_shape_shape = resurrection_shape.shape
@@ -149,3 +153,6 @@ func _on_possess_area_body_exited(body: CharacterBody2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip"):
 		GameEvent.skip_level()
+
+func _on_mana_drained() -> void:
+	is_mana_drained = true

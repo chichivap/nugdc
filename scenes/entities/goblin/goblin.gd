@@ -4,7 +4,7 @@ extends CharacterBody2D
 const PLAYER_GROUP: StringName = "player"
 const SKELETON_GROUP: StringName = "skeleton"
 const COMBAT_RANGE: int = 8
-const SPEED: int = 100
+const SPEED: int = 70
 
 
 var state_machine := CallableStateMachine.new()
@@ -17,6 +17,7 @@ var current_target: CharacterBody2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var invincible_timer: Timer = $InvincibleTimer
 
 func _ready():
 	state_machine.add_state(state_idle, Callable(), Callable())
@@ -27,9 +28,11 @@ func _ready():
 
 	target_acquisition_timer.timeout.connect(_on_target_acquisition_timeout)
 	health_component.died.connect(_on_died)
-	health_component.health_changed.connect(func(value):
-		print("Goblin's health: %d" % value)
-	)
+	health_component.health_changed.connect(_on_hurt.unbind(1))
+	invincible_timer.timeout.connect(func(): 
+		health_component.is_invincible = false
+		
+		)
 
 
 func _process(_delta):
@@ -98,3 +101,9 @@ func state_attack() -> void:
 
 func _on_died() -> void:
 	queue_free()
+
+func _on_hurt() -> void:
+	if health_component.is_invincible:
+		return
+	health_component.is_invincible = true
+	invincible_timer.start()

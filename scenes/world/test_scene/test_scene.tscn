@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://biodytjmawc1w"]
+[gd_scene load_steps=8 format=3 uid="uid://biodytjmawc1w"]
 
 [ext_resource type="PackedScene" uid="uid://dtycjwyv8wu6m" path="res://scenes/entities/necromancer/necromancer.tscn" id="1_6ddml"]
+[ext_resource type="Script" uid="uid://cjihb4ceqbs1d" path="res://scenes/world/test_scene/test_scene.gd" id="1_hvvo2"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="2_l47gx"]
 [ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="3_l47gx"]
 [ext_resource type="PackedScene" uid="uid://bvor1w6vl73cn" path="res://scenes/world/Objects/floor_spike.tscn" id="4_4h2eg"]
+[ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="5_3eqfv"]
+[ext_resource type="PackedScene" uid="uid://b72abx5wxiqnp" path="res://scripts/components/game_lose_component.tscn" id="6_4qacm"]
 
 [node name="test_scene" type="Node2D"]
+script = ExtResource("1_hvvo2")
 
 [node name="Necromancer" parent="." instance=ExtResource("1_6ddml")]
 position = Vector2(201, 47)
@@ -18,3 +22,12 @@ position = Vector2(99, 38)
 
 [node name="FloorSpike" parent="." instance=ExtResource("4_4h2eg")]
 position = Vector2(186, 126)
+
+[node name="Goblin" parent="." instance=ExtResource("5_3eqfv")]
+position = Vector2(34, 21)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameLoseComponent" parent="CanvasLayer" node_paths=PackedStringArray("necromancer") instance=ExtResource("6_4qacm")]
+necromancer = NodePath("../../Necromancer")

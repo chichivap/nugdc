@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://nthnqa2ckrb0"]
+[gd_scene load_steps=11 format=4 uid="uid://nthnqa2ckrb0"]
 
 [ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="1_adanq"]
 [ext_resource type="Script" uid="uid://beriv5awwejmf" path="res://scenes/world/Level5/fifth_level.gd" id="1_y1866"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b1sq50phpnatl" path="res://scenes/world/Objects/dynamic_pressure_plate.tscn" id="5_gjnoo"]
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="5_u4d67"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_gjnoo"]
+[ext_resource type="PackedScene" uid="uid://bvor1w6vl73cn" path="res://scenes/world/Objects/floor_spike.tscn" id="9_4vfw2"]
+[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="10_augcu"]
 
 [node name="fifth_level" type="Node2D"]
 script = ExtResource("1_y1866")
@@ -49,12 +51,17 @@ position = Vector2(203, 33)
 y_sort_enabled = true
 position = Vector2(48, 47)
 
+[node name="FloorSpike" parent="YSortOrigin" instance=ExtResource("9_4vfw2")]
+position = Vector2(100, 54)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(32, 15, 256, 16, 256, 32, 163, 32, 164, 98, 143, 99, 144, 30, 128, 30, 128, 97, 110, 96, 110, 31, 48, 32, 48, 144, 240, 143, 240, 34, 256, 34, 256, 159, 32, 158)
+
+[node name="Menus" parent="." instance=ExtResource("10_augcu")]
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]

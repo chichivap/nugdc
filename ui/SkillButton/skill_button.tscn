@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://j6rhg4d0n1bj"]
+
+[ext_resource type="Script" uid="uid://bksc1d1sbcjpd" path="res://ui/SkillButton/skill_button.gd" id="1_yme4v"]
+[ext_resource type="AudioStream" uid="uid://clw51flyr38wn" path="res://sound/effects/spell.wav" id="2_2f6bg"]
+[ext_resource type="Script" uid="uid://cfmu3vlnm31dm" path="res://scripts/components/variable_pitch_audio_stream_player.gd" id="3_jt2jg"]
+[ext_resource type="Texture2D" uid="uid://bag30moc3lx6w" path="res://assets/Layer 1.png" id="4_jt2jg"]
+[ext_resource type="Texture2D" uid="uid://kyb2sn0yy0sw" path="res://assets/Icons/PosessIcon.png" id="5_mbv2w"]
+
+[node name="PossessButton" type="Button"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yme4v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2f6bg")
+bus = &"sfx"
+script = ExtResource("3_jt2jg")
+metadata/_custom_type_script = "uid://cfmu3vlnm31dm"
+
+[node name="Cooldown1" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.15
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("4_jt2jg")
+tint_progress = Color(0.0745098, 0.0745098, 0.0745098, 0.541176)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_mbv2w")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

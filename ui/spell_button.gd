@@ -7,21 +7,27 @@ extends TextureButton
 @onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 var skill = null
 
-var change_key = "":
+var change_key: String= "":
 	set(value):
 		change_key = value
 		key.text = value
 
-		shortcut = Shortcut.new()
-		var input_key = InputEventKey.new()
-		#input_key.keycode = value.unicode_at(0)
-		input_key.key_label = value.unicode_at(0)
-		shortcut.events = [input_key]
+		#shortcut = Shortcut.new()
+		#var input_key = InputEventKey.new()
+		#input_key.key_label = value.unicode_at(0)
+		#shortcut.events = [input_key]
+		
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(change_key) and !disabled:
+		_on_pressed()
+
 
 func _ready() -> void:
 	change_key = "1"
 	cooldown.max_value = timer.wait_time
 	set_process(false)
+
 
 func _process(_delta: float) -> void:
 	time.text = "%3.1f" % timer.time_left
@@ -31,7 +37,7 @@ func _process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	disabled = false
 	cooldown.value = 0.0
-	time.text = ""
+
 	set_process(false) 
 
 func _on_pressed() -> void:
