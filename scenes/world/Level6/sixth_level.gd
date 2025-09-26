@@ -12,6 +12,3 @@ func _process(_delta: float) -> void:
 	else:
 		trapdoor.close()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("restart"):
-		GameEvent.restart_level(LEVEL_ID)

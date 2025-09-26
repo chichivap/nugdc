@@ -164,22 +164,20 @@ player = NodePath("..")
 
 [node name="SpellButton1" parent="SpellUI" groups=["spell_button"] instance=ExtResource("6_i7lwb")]
 custom_minimum_size = Vector2(16, 16)
-offset_left = 142.0
-offset_top = 162.0
-offset_right = 158.0
-offset_bottom = 178.0
-grow_horizontal = 2
+offset_left = 279.705
+offset_top = 22.0
+offset_right = 295.705
+offset_bottom = 38.0
 scale = Vector2(1, 1)
 size_flags_horizontal = 8
 metadata/_edit_group_ = true
 
 [node name="SpellButton2" parent="SpellUI" groups=["spell_button"] instance=ExtResource("6_i7lwb")]
 custom_minimum_size = Vector2(16, 16)
-offset_left = 162.0
-offset_top = 162.0
-offset_right = 178.0
-offset_bottom = 178.0
-grow_horizontal = 2
+offset_left = 279.705
+offset_top = 38.0
+offset_right = 295.705
+offset_bottom = 54.0
 scale = Vector2(1, 1)
 size_flags_horizontal = 8
 metadata/_edit_group_ = true

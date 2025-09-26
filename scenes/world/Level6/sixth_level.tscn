@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1sq50phpnatl" path="res://scenes/world/Objects/dynamic_pressure_plate.tscn" id="5_lf8uj"]
 [ext_resource type="PackedScene" uid="uid://b1k3jmunabfsd" path="res://scenes/entities/goblin/goblin.tscn" id="6_duxcb"]
 [ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="7_aopjw"]
-[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="8_8b83b"]
+[ext_resource type="PackedScene" uid="uid://dt1knav3e2bh" path="res://ui/menus.tscn" id="8_8b83b"]
 
 [node name="sixth_level" type="Node2D"]
 script = ExtResource("1_v8thn")

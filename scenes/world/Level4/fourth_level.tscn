@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1sq50phpnatl" path="res://scenes/world/Objects/dynamic_pressure_plate.tscn" id="5_lcweq"]
 [ext_resource type="PackedScene" uid="uid://cvpsi182xdt5p" path="res://scenes/world/Objects/skeleton_barrier.tscn" id="7_o4huv"]
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="8_34iv6"]
-[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="9_706qw"]
+[ext_resource type="PackedScene" uid="uid://dt1knav3e2bh" path="res://ui/menus.tscn" id="9_706qw"]
 
 [node name="FourthLevel" type="Node2D"]
 script = ExtResource("1_0t0dw")

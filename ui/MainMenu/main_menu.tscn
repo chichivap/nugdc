@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3ghf3epre4kc"]
+[gd_scene load_steps=18 format=3 uid="uid://3ghf3epre4kc"]
 
 [ext_resource type="Script" uid="uid://1nbgg5ymh0a3" path="res://ui/MainMenu/main_menu.gd" id="1_d5cii"]
 [ext_resource type="FontFile" uid="uid://bnmkh6c8erw31" path="res://fonts/fusion-pixel-10px-monospaced-jp_5.2.5/ttf/fusion-pixel-10px-monospaced-jp-latin-400-normal.ttf" id="1_rhxdg"]
@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4si7q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4si7q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hjxc"]
 bg_color = Color(0, 0.766743, 0.870854, 1)
 border_width_left = 4
 border_width_top = 3
@@ -16,9 +16,9 @@ border_width_right = 4
 border_width_bottom = 9
 border_color = Color(0, 0.227451, 0.690196, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hjxc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5th28"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5th28"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stv1f"]
 bg_color = Color(0.0588235, 0.529412, 0.843137, 1)
 border_width_left = 4
 border_width_top = 3
@@ -26,7 +26,7 @@ border_width_right = 4
 border_width_bottom = 8
 border_color = Color(0, 0.227451, 0.690196, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxbwa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4qb0"]
 bg_color = Color(0.286275, 0.894118, 1, 1)
 border_width_left = 4
 border_width_top = 3
@@ -55,12 +55,38 @@ MainMenuButton/constants/icon_max_width = 0
 MainMenuButton/constants/outline_size = 0
 MainMenuButton/font_sizes/font_size = 10
 MainMenuButton/fonts/font = ExtResource("1_rhxdg")
-MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_4si7q")
-MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hjxc")
-MainMenuButton/styles/hover = SubResource("StyleBoxFlat_5th28")
-MainMenuButton/styles/normal = SubResource("StyleBoxFlat_4si7q")
-MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_fxbwa")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_8hjxc")
+MainMenuButton/styles/focus = SubResource("StyleBoxEmpty_5th28")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_stv1f")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_8hjxc")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_j4qb0")
 SettingsButton/base_type = &"Button"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4si7q"]
+bg_color = Color(0, 0.766743, 0.870854, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 9
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hjxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5th28"]
+bg_color = Color(0.0588235, 0.529412, 0.843137, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0, 0.227451, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxbwa"]
+bg_color = Color(0.286275, 0.894118, 1, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.690196, 1)
 
 [sub_resource type="Theme" id="Theme_4si7q"]
 MainMenuButton/base_type = &"Button"

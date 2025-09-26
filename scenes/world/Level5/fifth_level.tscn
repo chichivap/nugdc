@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="5_u4d67"]
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_gjnoo"]
 [ext_resource type="PackedScene" uid="uid://bvor1w6vl73cn" path="res://scenes/world/Objects/floor_spike.tscn" id="9_4vfw2"]
-[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="10_augcu"]
+[ext_resource type="PackedScene" uid="uid://dt1knav3e2bh" path="res://ui/menus.tscn" id="10_augcu"]
 
 [node name="fifth_level" type="Node2D"]
 script = ExtResource("1_y1866")

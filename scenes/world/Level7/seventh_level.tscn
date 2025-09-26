@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cvr06bsxotsvl" path="res://scenes/entities/skeleton/corpse.tscn" id="7_aeeqp"]
 [ext_resource type="PackedScene" uid="uid://sw0xowg80kyd" path="res://scenes/world/Objects/permanent_pressure_plate.tscn" id="8_vk3v7"]
 [ext_resource type="PackedScene" uid="uid://14aejxorpjam" path="res://sound/effects/skeleton_perm_pressure_plate.tscn" id="9_c145p"]
-[ext_resource type="PackedScene" uid="uid://gxk33auha62x" path="res://ui/menus.tscn" id="11_myo6j"]
+[ext_resource type="PackedScene" uid="uid://dt1knav3e2bh" path="res://ui/menus.tscn" id="11_myo6j"]
 
 [node name="SeventhLevel" type="Node2D"]
 script = ExtResource("1_830pm")

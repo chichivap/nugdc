@@ -2,9 +2,17 @@ extends Control
 @onready var vbox_container: VBoxContainer = $VBoxContainer
 @onready var panel_container: PanelContainer = $PanelContainer
 
+
+const TRANSITION_SCENE: PackedScene = preload("uid://bbwobgmcbrmmi")
+
+var transition: PixelTransition
+
+
 signal settings_pressed()
 
 func _ready() -> void:
+	transition = TRANSITION_SCENE.instantiate()
+	add_child(transition)
 	visible = false
 
 func resume() -> void:
@@ -32,6 +40,7 @@ func _on_settings_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	resume()
 	get_tree().reload_current_scene()
+	
 
 
 func _on_exit_button_pressed() -> void:

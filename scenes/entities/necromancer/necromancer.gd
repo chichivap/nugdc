@@ -44,6 +44,9 @@ var can_possess: bool = false
 
 var is_mana_drained: bool = false 
 
+signal first_resurrection_ended(value: int)
+var resurrection_counter: int = 0
+
 func _process(_delta: float) -> void:
 	state_machine.update()
 	if should_draw_res_circle:
@@ -102,6 +105,7 @@ func state_res() -> void:
 	#	corpse.resurrect()
 
 func end_res() -> void:
+	resurrection_counter += 1
 	is_resurrecting = false
 	resurrection_shape.disabled = true
 	should_draw_res_circle = false
@@ -117,7 +121,7 @@ func end_res() -> void:
 	var skeleton: Skeleton = get_tree().get_first_node_in_group(SKELETON_GROUP)
 	if !is_instance_valid(skeleton):
 		return
-
+	first_resurrection_ended.emit(resurrection_counter)
 
 
 func _on_resurrection_area_entered(other_area: Area2D) -> void:

@@ -28,27 +28,9 @@ func skip_level():
 
 func completed_level():
 	current_level += 1
-	print(current_level)
 	var next_scene = match_level_scene(current_level)
 	if next_scene:
 		transition.transition_to(next_scene)
-
-
-	#match current_level:
-	#	1:
-	#		get_tree().change_scene_to_packed.call_deferred(first_level)
-	#	2:
-	#		get_tree().change_scene_to_packed.call_deferred(second_level)
-	#	3:
-	#		get_tree().change_scene_to_packed.call_deferred(third_level)
-	#	4:
-	#		get_tree().change_scene_to_packed.call_deferred(fourth_level)
-	#	5:
-	#		get_tree().change_scene_to_packed.call_deferred(fifth_level)
-	#	6:
-	#		get_tree().change_scene_to_packed.call_deferred(sixth_level)
-	#	7:
-	#		print("seventh completed")
 
 func restart_level(value):
 	match value:

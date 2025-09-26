@@ -6,8 +6,11 @@ const LEVEL_ID = 3
 @onready var permanent_pressure_plate: PermanentPressurePlate = $YSortOrigin/PermanentPressurePlate
 @onready var trapdoor: Trapdoor = $YSortOrigin/Trapdoor
 @onready var goblin: Goblin = $YSortOrigin/Goblin
+@onready var tutorial_menu: CombatTutorialMenu = $TutorialMenu
+
 func _ready():
-	pass
+	tutorial_menu.timer.start()
+	tutorial_menu.timer.timeout.connect(_on_timer_timeout)
 
 func _process(_delta: float) -> void:
 	if permanent_pressure_plate.pressed and skeleton_perm_pressure_plate.pressed and !is_instance_valid(goblin):
@@ -15,7 +18,6 @@ func _process(_delta: float) -> void:
 	else:
 		trapdoor.close()
 
+func _on_timer_timeout() -> void:
+	tutorial_menu.show_tutorial(true)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("restart"):
-		GameEvent.restart_level(LEVEL_ID)

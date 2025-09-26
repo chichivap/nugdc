@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var pause_menu: Control = $PauseMenu
 @onready var settings_menu: Control = $SettingsMenu
 
+@export var actor: Necromancer
+
 func _ready() -> void:
 	pause_menu.settings_pressed.connect(_on_settings_pressed)
 	settings_menu.returned_to_pause_menu.connect(_on_returned_to_pause)

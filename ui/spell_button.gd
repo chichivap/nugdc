@@ -12,11 +12,6 @@ var change_key: String= "":
 		change_key = value
 		key.text = value
 
-		#shortcut = Shortcut.new()
-		#var input_key = InputEventKey.new()
-		#input_key.key_label = value.unicode_at(0)
-		#shortcut.events = [input_key]
-		
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(change_key) and !disabled:
@@ -24,7 +19,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	change_key = "1"
+	change_key = "possess"
 	cooldown.max_value = timer.wait_time
 	set_process(false)
 

@@ -8,7 +8,8 @@ func _ready() -> void:
 		return
 	slots = get_children()
 	for i in get_child_count():
-		slots[i].change_key = str(i+1)
+		slots[0].change_key = "possess"
+		slots[1].change_key = "resurrect"
 
 	slots[0].skill = PossessSkill.new(slots[0])
 	slots[1].skill = ResurrectSkill.new(slots[1])

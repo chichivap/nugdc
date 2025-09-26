@@ -116,7 +116,7 @@ polygon = PackedVector2Array(32, 16, 255, 16, 255, 31, 252, 30, 81, 31, 83, 52, 
 script = ExtResource("10_1pwpp")
 
 [node name="TutorialBox" type="Control" parent="TutorialMenu"]
-process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,13 +139,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
+offset_left = -80.0
 offset_top = -11.5
-offset_right = 65.0
+offset_right = 80.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Skeleton can attack Goblin"
+text = "Skeleton can attack the Goblin"
 label_settings = ExtResource("9_yohdq")
 
 [node name="ProceedButton" type="Button" parent="TutorialMenu/TutorialBox"]
@@ -168,10 +168,6 @@ theme = SubResource("Theme_ij2u7")
 theme_type_variation = &"MainMenuButton"
 text = "Proceed
 "
-
-[node name="Timer" type="Timer" parent="TutorialMenu"]
-wait_time = 0.6
-one_shot = true
 
 [connection signal="pressed" from="TutorialMenu/TutorialBox/ProceedButton" to="TutorialMenu" method="_on_proceed_button_pressed"]
 
