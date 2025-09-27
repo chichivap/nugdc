@@ -76,7 +76,7 @@ script = ExtResource("1_xip67")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 z_index = -8
-tile_map_data = PackedByteArray("AAADAAMAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAADAAYAAAABAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAEAAgAAAAAAAIAAAAFAAcAAAABAAIAAAAFAAgAAAAAAAIAAAAJAAUAAAAAAAIAAAAJAAYAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAKAAQAAAAAAAIAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAIAAAAKAAcAAAAAAAIAAAAKAAgAAAADAAIAAAALAAQAAAAAAAIAAAALAAUAAAADAAIAAAALAAYAAAAAAAIAAAALAAcAAAAAAAIAAAALAAgAAAADAAIAAAAMAAQAAAAAAAIAAAAMAAUAAAAAAAIAAAAMAAYAAAADAAIAAAAMAAcAAAAAAAIAAAAMAAgAAAAAAAIAAAANAAMAAAAAAAIAAAANAAQAAAAAAAIAAAANAAUAAAAAAAIAAAANAAYAAAAAAAIAAAANAAcAAAAAAAIAAAANAAgAAAAAAAIAAAAOAAMAAAAAAAIAAAAOAAQAAAAAAAIAAAAOAAUAAAAAAAIAAAAOAAYAAAAAAAIAAAAOAAcAAAAAAAIAAAAOAAgAAAAAAAIAAAAJAAMAAAABAAIAAAAFAAYAAAAAAAIAAAAHAAUAAAAAAAIAAAAGAAcAAAAAAAIAAAAEAAQAAAABAAIAAAAGAAMAAAADAAIAAAAHAAcAAAAAAAIAAAAGAAYAAAAAAAIAAAAHAAYAAAACAAIAAAAHAAgAAAADAAIAAAAFAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAMAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAADAAYAAAABAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAEAAgAAAAAAAIAAAAFAAcAAAABAAIAAAAFAAgAAAAAAAIAAAAJAAUAAAAAAAIAAAAJAAYAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAKAAQAAAAAAAIAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAIAAAAKAAcAAAAAAAIAAAALAAQAAAAAAAIAAAALAAUAAAADAAIAAAALAAYAAAAAAAIAAAALAAcAAAAAAAIAAAALAAgAAAADAAIAAAAMAAQAAAAAAAIAAAAMAAUAAAAAAAIAAAAMAAYAAAADAAIAAAAMAAcAAAAAAAIAAAAMAAgAAAAAAAIAAAANAAMAAAAAAAIAAAANAAQAAAAAAAIAAAANAAUAAAAAAAIAAAANAAYAAAAAAAIAAAANAAcAAAAAAAIAAAANAAgAAAAAAAIAAAAOAAMAAAAAAAIAAAAOAAQAAAAAAAIAAAAOAAUAAAAAAAIAAAAOAAYAAAAAAAIAAAAOAAcAAAAAAAIAAAAOAAgAAAAAAAIAAAAJAAMAAAABAAIAAAAFAAYAAAAAAAIAAAAHAAUAAAAAAAIAAAAGAAcAAAAAAAIAAAAEAAQAAAABAAIAAAAGAAMAAAADAAIAAAAHAAcAAAAAAAIAAAAGAAYAAAAAAAIAAAAHAAYAAAACAAIAAAAHAAgAAAADAAIAAAAFAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAKAAgAAAAAAAIAAAA=")
 tile_set = ExtResource("2_o0h1j")
 
 [node name="Wall" type="TileMapLayer" parent="."]
@@ -102,43 +102,18 @@ position = Vector2(145, 128)
 [node name="Necromancer" parent="YSortOrigin" instance=ExtResource("6_ok6h6")]
 position = Vector2(54, 98)
 
+[node name="FloorSpike" parent="YSortOrigin" instance=ExtResource("9_sj60w")]
+position = Vector2(160, 128)
+
+[node name="FloorSpike2" parent="YSortOrigin" instance=ExtResource("9_sj60w")]
+position = Vector2(145, 112)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(32, 19, 256, 19, 255, 33, 255, 42, 225, 34, 224, 80, 207, 81, 207, 35, 177, 35, 177, 81, 158, 82, 158, 34, 128, 34, 128, 64, 111, 64, 112, 34, 96, 34, 97, 80, 79, 81, 80, 35, 48, 35, 48, 144, 96, 144, 96, 126, 113, 126, 113, 143, 128, 143, 127, 111, 145, 112, 145, 143, 175, 144, 175, 126, 192, 126, 193, 143, 240, 143, 240, 35, 255, 51, 256, 159, 33, 161)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="PossessSkillDesc" type="Label" parent="CanvasLayer"]
-offset_left = 259.0
-offset_top = 17.0
-offset_right = 314.0
-offset_bottom = 27.0
-text = "Possess - 1"
-label_settings = ExtResource("8_5wser")
-
-[node name="ResSkillDesc" type="Label" parent="CanvasLayer"]
-offset_left = 259.0
-offset_top = 40.0
-offset_right = 319.0
-offset_bottom = 63.0
-text = "Resurrect
-Skeleton - 2"
-label_settings = ExtResource("8_5wser")
-
-[node name="Restart" type="Label" parent="CanvasLayer"]
-offset_left = 259.0
-offset_top = 76.0
-offset_right = 314.0
-offset_bottom = 99.0
-text = "Restart - R"
-label_settings = ExtResource("8_5wser")
-
-[node name="FloorSpike" parent="." instance=ExtResource("9_sj60w")]
-position = Vector2(160, 80)
 
 [node name="GameLoseComponent" parent="." node_paths=PackedStringArray("necromancer") instance=ExtResource("11_kdq4h")]
 necromancer = NodePath("../YSortOrigin/Necromancer")
@@ -148,6 +123,10 @@ script = ExtResource("13_rnqlh")
 
 [node name="TutorialBox" parent="TutorialLayer" index="0"]
 process_mode = 3
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 1.0
+offset_bottom = 10.0
 
 [node name="PanelContainer" parent="TutorialLayer/TutorialBox" index="0"]
 visible = false
@@ -271,7 +250,11 @@ theme_type_variation = &"MainMenuButton"
 text = "Proceed
 "
 
+[node name="Timer" parent="TutorialLayer" index="1"]
+wait_time = 1.5
+
 [node name="Menus" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("10_8o8mu")]
+visible = false
 actor = NodePath("../YSortOrigin/Necromancer")
 
 [connection signal="pressed" from="TutorialLayer/TutorialBox/ProceedRButton" to="TutorialLayer" method="_on_proceed_r_button_pressed"]

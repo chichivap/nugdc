@@ -39,7 +39,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	resume()
-	get_tree().reload_current_scene()
+	GameEvent.restart_level(GameEvent.current_level)
 	
 
 

@@ -1,4 +1,3 @@
-class_name GameEvents
 extends Node
 
 var current_level: int = 0

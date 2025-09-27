@@ -21,4 +21,4 @@ func update_label(value: int) -> void:
 	label_timer.text = str(value)
 
 func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	GameEvent.restart_level(GameEvent.current_level)

@@ -11,9 +11,9 @@ script = ExtResource("1_weeuh")
 [node name="LabelTimer" type="Label" parent="."]
 layout_mode = 0
 offset_left = 39.0
-offset_top = 157.0
-offset_right = 79.0
-offset_bottom = 180.0
+offset_top = 164.0
+offset_right = 81.0
+offset_bottom = 187.0
 text = "Timer: "
 label_settings = ExtResource("2_wcdda")
 

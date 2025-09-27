@@ -17,6 +17,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if pressed:
+		return
 	if body:
 		pressed = true
 		variable_pitch_audio_stream_player.play()

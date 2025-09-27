@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const PLAYER_GROUP: StringName = "player"
 const SKELETON_GROUP: StringName = "skeleton"
-const COMBAT_RANGE: int = 8
+const COMBAT_RANGE: int = 16
 const SPEED: int = 70
 
 
@@ -18,6 +18,7 @@ var current_target: CharacterBody2D
 @onready var variable_pitch_audio_stream_player: AudioStreamPlayer = $VariablePitchAudioStreamPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var invincible_timer: Timer = $InvincibleTimer
+@onready var spawner_component: SpawnerComponent = $SpawnerComponent
 
 func _ready():
 	state_machine.add_state(state_idle, Callable(), Callable())
@@ -101,6 +102,8 @@ func state_attack() -> void:
 
 func _on_died() -> void:
 	queue_free()
+	spawner_component.spawn(global_position)
+
 
 func _on_hurt() -> void:
 	if health_component.is_invincible:

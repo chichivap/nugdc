@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://nthnqa2ckrb0"]
+[gd_scene load_steps=12 format=4 uid="uid://nthnqa2ckrb0"]
 
 [ext_resource type="TileSet" uid="uid://dsmryn26h123a" path="res://scenes/world/world_tilemap.tres" id="1_adanq"]
 [ext_resource type="Script" uid="uid://beriv5awwejmf" path="res://scenes/world/Level5/fifth_level.gd" id="1_y1866"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bqvghd16833cq" path="res://scenes/entities/skeleton/skeleton.tscn" id="7_gjnoo"]
 [ext_resource type="PackedScene" uid="uid://bvor1w6vl73cn" path="res://scenes/world/Objects/floor_spike.tscn" id="9_4vfw2"]
 [ext_resource type="PackedScene" uid="uid://dt1knav3e2bh" path="res://ui/menus.tscn" id="10_augcu"]
+[ext_resource type="PackedScene" uid="uid://b72abx5wxiqnp" path="res://scripts/components/game_lose_component.tscn" id="11_am4g1"]
 
 [node name="fifth_level" type="Node2D"]
 script = ExtResource("1_y1866")
@@ -62,6 +63,9 @@ collision_mask = 7
 polygon = PackedVector2Array(32, 15, 256, 16, 256, 32, 163, 32, 164, 98, 143, 99, 144, 30, 128, 30, 128, 97, 110, 96, 110, 31, 48, 32, 48, 144, 240, 143, 240, 34, 256, 34, 256, 159, 32, 158)
 
 [node name="Menus" parent="." instance=ExtResource("10_augcu")]
+
+[node name="GameLoseComponent" parent="." node_paths=PackedStringArray("necromancer") instance=ExtResource("11_am4g1")]
+necromancer = NodePath("../YSortOrigin/Necromancer")
 
 [editable path="YSortOrigin/Necromancer"]
 [editable path="YSortOrigin/Necromancer/SpellUI/SpellButton1"]

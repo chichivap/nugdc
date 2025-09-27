@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=4 uid="uid://cw8xe6vxlyjux"]
+
+[ext_resource type="Script" uid="uid://bc42yohvaj2ul" path="res://effects/DeathEffect/animated_sprite_2d.gd" id="1_b55fs"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ug2jt"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAC+AAAAUklGRrYAAABXRUJQVlA4TKkAAAAvL8ALEB8gEEjyp1lkPwIBiuKV+ZaNxPwHcF8VwK21vXlyJdlkZE8AKzCA02gehTrHLmoEj0GGMnZ/IFNH9H8C/NzuoG4SKLd9ErPEwS0HkYM1dkaInGTOMlaYzfPUUx8o6w0IkxYTv2FomHjScrCTWtxuJ9NYd3rLWcPOiIMlNiuZg8xOrCuZO7z1eMpsrbCd2Elsx0qoucI7nqFo36fT9N+NLaYbWpcWAA==")
+size_override = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b55fs"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05r5b"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjvff"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sh8y"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvopx"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jeed"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbprq"]
+atlas = SubResource("PortableCompressedTexture2D_ug2jt")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v208"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b55fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05r5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjvff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sh8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvopx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jeed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbprq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="DeathEffect" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6v208")
+autoplay = "default"
+script = ExtResource("1_b55fs")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": ["DeathEffect"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/vfx/DeathEffect/DeathEffect.aseprite",
+"source_uid": 4252134118094567649
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5ce8ab4bef0ed0cd3707765bef72b1bd"
